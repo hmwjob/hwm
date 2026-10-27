@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" href="images/favicon.ico">
     <title>HMW | Estaciones de Trabajo Móviles de Hierro y Madera</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -83,7 +82,7 @@
                 </div>
                 <div>
                     <span class="font-tech font-bold text-xl tracking-wider text-white block leading-none">HOME MOBILE WORK</span>
-                    <span class="text-[10px] text-brand-blue uppercase font-mono tracking-widest block mt-1">Estaciones De Trabajo</span>
+                    <span class="text-[10px] text-brand-blue uppercase font-mono tracking-widest block mt-1">Estaciones Industriales 60x90</span>
                 </div>
             </a>
 
@@ -91,9 +90,9 @@
             <nav class="hidden md:flex items-center space-x-8 text-sm font-medium tracking-wide">
                 <a href="#plataforma" class="hover:text-brand-blue transition-colors">Plataforma Base</a>
                 <a href="#modelos" class="hover:text-brand-blue transition-colors">Estaciones</a>
+                <a href="#galeria" class="hover:text-brand-blue transition-colors">Productos Terminados</a>
                 <a href="#seguridad" class="hover:text-brand-blue transition-colors">Seguridad Eléctrica</a>
                 <a href="#configurador" class="hover:text-brand-blue transition-colors">Configurador Live</a>
-                <a href="#calidad" class="hover:text-brand-blue transition-colors">Calidad</a>
             </nav>
 
             <!-- Action Button -->
@@ -112,14 +111,14 @@
         <div id="mobileMenu" class="hidden md:hidden bg-brand-card border-b border-brand-border px-4 pt-2 pb-6 space-y-3">
             <a href="#plataforma" class="block py-2 text-gray-300 hover:text-brand-blue">Plataforma Base</a>
             <a href="#modelos" class="block py-2 text-gray-300 hover:text-brand-blue">Estaciones Específicas</a>
+            <a href="#galeria" class="block py-2 text-gray-300 hover:text-brand-blue">Galería de Fotos</a>
             <a href="#seguridad" class="block py-2 text-gray-300 hover:text-brand-blue">Seguridad Eléctrica</a>
             <a href="#configurador" class="block py-2 text-brand-blue font-bold">Configurador y Cotizador</a>
-            <a href="#calidad" class="block py-2 text-gray-300 hover:text-brand-blue">Proceso Constructivo</a>
         </div>
     </header>
 
     <!-- HERO SECTION -->
-    <section class="relative min-h-[90vh] flex items-center justify-center pt-12 pb-20 bg-blueprint overflow-hidden">
+    <section class="relative min-h-[85vh] flex items-center justify-center pt-12 pb-16 bg-blueprint overflow-hidden">
         <!-- Overlay Grid Gradient -->
         <div class="absolute inset-0 bg-gradient-to-b from-transparent via-brand-dark/80 to-brand-dark"></div>
 
@@ -171,39 +170,59 @@
                             <span>CONFIGURAR MI ESTACIÓN</span>
                             <i class="fa-solid fa-arrow-right"></i>
                         </a>
-                        <a href="#modelos" class="inline-flex items-center justify-center gap-2 bg-brand-steel/80 hover:bg-brand-steel text-white border border-brand-border font-medium text-base px-6 py-4 rounded-sm transition-all">
-                            <i class="fa-solid fa-layer-group text-brand-blue"></i>
-                            <span>Ver 5 Modelos</span>
+                        <a href="#galeria" class="inline-flex items-center justify-center gap-2 bg-brand-steel/80 hover:bg-brand-steel text-white border border-brand-border font-medium text-base px-6 py-4 rounded-sm transition-all">
+                            <i class="fa-solid fa-camera text-brand-blue"></i>
+                            <span>Ver Productos Reales</span>
                         </a>
                     </div>
                 </div>
 
-                <!-- Right Hero Column: Blueprint Visualizer Box -->
+                <!-- Right Hero Column: Real Product Feature Showcase -->
                 <div class="lg:col-span-5">
-                    <div class="relative bg-brand-card border-2 border-brand-blue/40 rounded-sm p-6 shadow-2xl bg-grid-pattern">
-                        <!-- Blueprint Watermark Header -->
+                    <div class="relative bg-brand-card border-2 border-brand-blue/40 rounded-sm p-4 sm:p-5 shadow-2xl bg-grid-pattern">
+                        <!-- Header -->
                         <div class="flex justify-between items-center border-b border-brand-border pb-3 mb-4 font-mono text-xs text-brand-blue">
-                            <span>ESQUEMA TÉCNICO V1.0</span>
-                            <span class="bg-brand-blue/10 px-2 py-0.5 border border-brand-blue/30 rounded text-[10px]">600 x 900 x 600 mm</span>
+                            <span class="flex items-center gap-2">
+                                <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+                                PRODUCTO TERMINADO DE FÁBRICA
+                            </span>
+                            <span class="bg-brand-blue/10 px-2 py-0.5 border border-brand-blue/30 rounded text-[10px]">MEDIDA: 60x90x60 cm</span>
                         </div>
 
-                        <!-- Canvas Drawing Area -->
-                        <div class="relative w-full aspect-square bg-brand-dark/90 border border-brand-border flex items-center justify-center rounded-sm overflow-hidden p-2">
-                            <canvas id="blueprintCanvas" width="400" height="400" class="w-full h-full object-contain cursor-grab active:cursor-grabbing"></canvas>
-                            <div class="absolute bottom-2 left-2 text-[10px] font-mono text-gray-400 bg-black/60 px-2 py-1 rounded">
-                                <i class="fa-solid fa-rotate text-brand-blue mr-1"></i> Arrastra horizontalmente para rotar vista 3D
+                        <!-- Featured Photo Display Card -->
+                        <div class="relative aspect-[4/3] rounded-sm overflow-hidden border border-brand-border group cursor-pointer" onclick="openLightbox(0)">
+                            <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80" 
+                                 alt="Estación HMW Terminado" 
+                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                 onerror="this.src='https://placehold.co/800x600/161920/00A8FF?text=Estacion+HMW+Mesa+Trabajo'">
+                            
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent flex flex-col justify-end p-4">
+                                <span class="text-brand-blue font-mono text-[10px] uppercase font-bold tracking-wider">// MODELO DESTACADO</span>
+                                <h3 class="font-tech font-bold text-white text-lg">Estación Móvil Multitarea 60x90</h3>
+                                <p class="text-gray-300 text-xs mt-1">Estructura en caño 40x40 mm con pintura epoxi negra y madera dura con luz LED.</p>
+                            </div>
+
+                            <div class="absolute top-3 right-3 bg-black/70 backdrop-blur-md px-3 py-1.5 rounded text-white font-mono text-xs border border-brand-border flex items-center gap-1.5">
+                                <i class="fa-solid fa-expand text-brand-blue"></i>
+                                <span>Ver Ampliado</span>
                             </div>
                         </div>
 
-                        <!-- Technical Spec Summary list -->
+                        <!-- Highlights Specs Badges Below Photo -->
                         <div class="mt-4 grid grid-cols-2 gap-2 text-xs font-mono text-gray-300">
-                            <div class="bg-brand-dark p-2 border border-brand-border/80">
-                                <span class="text-gray-400 block text-[10px]">TABLERO SUPERIOR:</span>
-                                <span>Madera Maciza / Fenólico</span>
+                            <div class="bg-brand-dark p-2.5 border border-brand-border/80 flex items-center gap-2">
+                                <i class="fa-solid fa-plug text-brand-blue"></i>
+                                <div>
+                                    <span class="text-gray-400 block text-[9px]">TABLERO ELÉCTRICO</span>
+                                    <span>220V + USB/USB-C</span>
+                                </div>
                             </div>
-                            <div class="bg-brand-dark p-2 border border-brand-border/80">
-                                <span class="text-gray-400 block text-[10px]">BRAZO ILUMINACIÓN:</span>
-                                <span>Giro 360° en 4 patas</span>
+                            <div class="bg-brand-dark p-2.5 border border-brand-border/80 flex items-center gap-2">
+                                <i class="fa-solid fa-lightbulb text-brand-blue"></i>
+                                <div>
+                                    <span class="text-gray-400 block text-[9px]">LUMINARIA ARTICULADA</span>
+                                    <span>Brazo LED 360°</span>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -342,7 +361,7 @@
                         <span class="font-mono text-xs text-gray-400 block">CONFIGURACIÓN BASE DE SERIE</span>
                         <h4 class="font-tech font-bold text-lg text-white mt-1">HMW GENERAL WORKSTATION</h4>
                         <span class="text-2xl font-tech font-bold text-brand-blue block my-2">$385.000 ARS</span>
-                        <span class="text-xs text-gray-400 font-mono">Incluye modulo eléctrico completo, parada de emergencia y brazo LED</span>
+                        <span class="text-xs text-gray-400 font-mono">Incluye módulo eléctrico completo, parada de emergencia y brazo LED</span>
                     </div>
                 </div>
 
@@ -498,6 +517,62 @@
                     </div>
                 </div>
 
+            </div>
+        </div>
+    </section>
+
+    <!-- GALERÍA DE PRODUCTOS TERMINADOS DE FÁBRICA -->
+    <section id="galeria" class="py-20 bg-brand-dark border-t border-brand-border/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-10">
+                <div>
+                    <span class="text-brand-blue font-mono text-xs uppercase tracking-widest font-semibold block mb-2">// MUESTRAS DE PRODUCTOS TERMINADOS</span>
+                    <h2 class="text-3xl sm:text-4xl font-tech font-bold text-white uppercase">Galería de Fábrica HMW</h2>
+                </div>
+                <p class="text-gray-400 max-w-md text-sm mt-3 md:mt-0">
+                    Fotos de nuestras estaciones terminadas en el taller de soldadura, con sus componentes eléctricos, maderas cepilladas y pintura epoxi.
+                </p>
+            </div>
+
+            <!-- Gallery Filter Buttons -->
+            <div class="flex flex-wrap gap-2 mb-8 font-mono text-xs" id="galleryFilterContainer">
+                <button onclick="filterGallery('all')" class="gallery-filter-btn active px-4 py-2 rounded-sm bg-brand-blue text-black font-bold transition-all">
+                    Todas las Fotos
+                </button>
+                <button onclick="filterGallery('general')" class="gallery-filter-btn px-4 py-2 rounded-sm bg-brand-steel hover:bg-brand-border text-gray-300 transition-all">
+                    Tareas Generales
+                </button>
+                <button onclick="filterGallery('electronica')" class="gallery-filter-btn px-4 py-2 rounded-sm bg-brand-steel hover:bg-brand-border text-gray-300 transition-all">
+                    Electricidad / Electrónica
+                </button>
+                <button onclick="filterGallery('mecanica')" class="gallery-filter-btn px-4 py-2 rounded-sm bg-brand-steel hover:bg-brand-border text-gray-300 transition-all">
+                    Mecánica
+                </button>
+                <button onclick="filterGallery('herreria')" class="gallery-filter-btn px-4 py-2 rounded-sm bg-brand-steel hover:bg-brand-border text-gray-300 transition-all">
+                    Herrería
+                </button>
+                <button onclick="filterGallery('carpinteria')" class="gallery-filter-btn px-4 py-2 rounded-sm bg-brand-steel hover:bg-brand-border text-gray-300 transition-all">
+                    Carpintería
+                </button>
+            </div>
+
+            <!-- Gallery Grid Container -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="galleryGrid">
+                <!-- Dynamic cards injected via Javascript -->
+            </div>
+
+            <!-- Instruction Box for Owner Photo Updates -->
+            <div class="mt-12 bg-brand-card/70 border border-dashed border-brand-blue/40 p-4 rounded-sm font-mono text-xs text-gray-400 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="flex items-center gap-3">
+                    <i class="fa-solid fa-folder-open text-brand-blue text-xl"></i>
+                    <div>
+                        <strong class="text-white block">¿Quieres subir tus propias fotos de productos reales?</strong>
+                        <span>Solo edita el arreglo de imágenes <code class="text-brand-blue">galleryImages</code> al final del código del archivo con tus URLs directas.</span>
+                    </div>
+                </div>
+                <a href="#configurador" class="bg-brand-steel text-white hover:text-brand-blue px-4 py-2 rounded border border-brand-border whitespace-nowrap">
+                    <i class="fa-solid fa-arrow-down mr-1"></i> Ir a Cotizar
+                </a>
             </div>
         </div>
     </section>
@@ -813,6 +888,38 @@
         </div>
     </section>
 
+    <!-- LIGHTBOX MODAL FOR FULL SCREEN PHOTO VIEWING -->
+    <div id="lightboxModal" class="fixed inset-0 z-50 bg-black/95 hidden flex flex-col items-center justify-between p-4 sm:p-8 backdrop-blur-md">
+        <!-- Lightbox Header -->
+        <div class="w-full max-w-5xl flex items-center justify-between font-mono text-xs text-gray-300 border-b border-brand-border/60 pb-3">
+            <span id="lightboxTitle" class="text-brand-blue font-bold text-sm">Estación HMW Terminado</span>
+            <button onclick="closeLightbox()" class="text-gray-400 hover:text-white p-2 text-xl">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+
+        <!-- Image Viewer Container -->
+        <div class="relative w-full max-w-5xl flex-1 flex items-center justify-center my-4 overflow-hidden">
+            <img id="lightboxImage" src="" alt="Full view" class="max-h-[75vh] max-w-full object-contain border border-brand-border rounded">
+            
+            <!-- Nav buttons -->
+            <button onclick="prevLightboxImage()" class="absolute left-2 bg-black/70 hover:bg-brand-blue hover:text-black text-white p-3 rounded-full border border-brand-border transition-all">
+                <i class="fa-solid fa-chevron-left text-lg"></i>
+            </button>
+            <button onclick="nextLightboxImage()" class="absolute right-2 bg-black/70 hover:bg-brand-blue hover:text-black text-white p-3 rounded-full border border-brand-border transition-all">
+                <i class="fa-solid fa-chevron-right text-lg"></i>
+            </button>
+        </div>
+
+        <!-- Lightbox Caption & Details -->
+        <div class="w-full max-w-5xl bg-brand-card p-4 border border-brand-border rounded flex flex-col sm:flex-row items-center justify-between text-xs font-mono gap-2">
+            <p id="lightboxCaption" class="text-gray-300">Estructura en caño 40x40 mm con tablero de madera y sistema eléctrico.</p>
+            <a href="#configurador" onclick="closeLightbox()" class="bg-brand-blue text-black font-bold px-4 py-2 rounded text-xs hover:bg-cyan-400 transition-colors">
+                Quiero Cotizar Este Modelo
+            </a>
+        </div>
+    </div>
+
     <!-- FOOTER -->
     <footer class="bg-brand-dark border-t border-brand-border/80 pt-16 pb-12 font-mono text-xs">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -840,6 +947,7 @@
                     <ul class="space-y-2 text-gray-400">
                         <li><a href="#plataforma" class="hover:text-brand-blue">Plataforma Base</a></li>
                         <li><a href="#modelos" class="hover:text-brand-blue">Estaciones Especializadas</a></li>
+                        <li><a href="#galeria" class="hover:text-brand-blue">Galería de Productos</a></li>
                         <li><a href="#configurador" class="hover:text-brand-blue">Simulador de Cotización</a></li>
                         <li><a href="#seguridad" class="hover:text-brand-blue">Seguridad Eléctrica</a></li>
                     </ul>
@@ -867,10 +975,143 @@
     <!-- INTERACTIVE JAVASCRIPT LOGIC -->
     <script>
         // -------------------------------------------------------------
+        // PHOTO GALLERY DATA STRUCTURE & LIGHTBOX
+        // Reemplaza estas URLs de Unsplash con tus fotos reales subidas
+        // -------------------------------------------------------------
+        const galleryImages = [
+            {
+                id: 1,
+                category: 'general',
+                title: 'Estación Tareas Generales HMW - 60x90',
+                description: 'Estructura pesada en caño 40x40 mm con tapa en madera eucalipto cepillada y tablero eléctrico.',
+                url: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80',
+                badge: 'General / Taller'
+            },
+            {
+                id: 2,
+                category: 'electronica',
+                title: 'Estación Electrónica / Electricidad',
+                description: 'Equipada con tomas aisladas 220V, salidas rápidas USB-C y superficie antiestática para soldaduras.',
+                url: 'https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=800&q=80',
+                badge: 'Electrónica'
+            },
+            {
+                id: 3,
+                category: 'mecanica',
+                title: 'Estación Mecánica de Chapa y Ruedas Pesadas',
+                description: 'Bandeja receptora de líquidos y aceites con ruedas de poliuretano de alto tránsito.',
+                url: 'https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=800&q=80',
+                badge: 'Mecánica'
+            },
+            {
+                id: 4,
+                category: 'herreria',
+                title: 'Estación Herrería para Amoladora y Morsa',
+                description: 'Superficie ignífuga de alto impacto para trabajo directo con soldadura y chispas.',
+                url: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=80',
+                badge: 'Herrería'
+            },
+            {
+                id: 5,
+                category: 'carpinteria',
+                title: 'Estación Carpintería con Prensa Lateral',
+                description: 'Tablero de madera dura preparado para orificios bench dogs y prensado de tirantes.',
+                url: 'https://images.unsplash.com/photo-1538688525198-9b88f6f53126?auto=format&fit=crop&w=800&q=80',
+                badge: 'Carpintería'
+            },
+            {
+                id: 6,
+                category: 'general',
+                title: 'Detalle de Seguridad: Golpe de Puño e Iluminación LED',
+                description: 'Módulo de energía integrado con parada de emergencia para cortar corriente instantáneamente.',
+                url: 'https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80',
+                badge: 'Seguridad'
+            }
+        ];
+
+        let currentLightboxIndex = 0;
+        let activeFilter = 'all';
+
+        function renderGallery() {
+            const grid = document.getElementById('galleryGrid');
+            grid.innerHTML = '';
+
+            const filtered = activeFilter === 'all' 
+                ? galleryImages 
+                : galleryImages.filter(img => img.category === activeFilter);
+
+            filtered.forEach((item, index) => {
+                const card = document.createElement('div');
+                card.className = 'bg-brand-card border border-brand-border rounded-sm overflow-hidden group hover:border-brand-blue transition-all flex flex-col justify-between';
+                
+                card.innerHTML = `
+                    <div class="relative aspect-[4/3] overflow-hidden bg-brand-dark cursor-pointer" onclick="openLightbox(${galleryImages.indexOf(item)})">
+                        <img src="${item.url}" alt="${item.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.src='https://placehold.co/800x600/161920/00A8FF?text=HMW+Producto+Terminado'">
+                        <div class="absolute top-3 left-3 bg-brand-blue text-black font-mono font-bold text-[10px] px-2 py-0.5 rounded">
+                            ${item.badge}
+                        </div>
+                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <span class="bg-black/80 text-white font-mono text-xs px-3 py-2 rounded border border-brand-blue flex items-center gap-2">
+                                <i class="fa-solid fa-magnifying-glass text-brand-blue"></i>
+                                Ampliar Foto
+                            </span>
+                        </div>
+                    </div>
+                    <div class="p-4 space-y-2">
+                        <h4 class="font-tech font-bold text-white text-base">${item.title}</h4>
+                        <p class="text-gray-400 text-xs font-mono leading-relaxed">${item.description}</p>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        function filterGallery(category) {
+            activeFilter = category;
+            
+            // Update filter button styles
+            const buttons = document.querySelectorAll('.gallery-filter-btn');
+            buttons.forEach(btn => {
+                if (btn.getAttribute('onclick').includes(`'${category}'`)) {
+                    btn.className = 'gallery-filter-btn active px-4 py-2 rounded-sm bg-brand-blue text-black font-bold transition-all';
+                } else {
+                    btn.className = 'gallery-filter-btn px-4 py-2 rounded-sm bg-brand-steel hover:bg-brand-border text-gray-300 transition-all';
+                }
+            });
+
+            renderGallery();
+        }
+
+        // Lightbox functions
+        function openLightbox(index) {
+            currentLightboxIndex = index;
+            const item = galleryImages[currentLightboxIndex];
+            
+            document.getElementById('lightboxImage').src = item.url;
+            document.getElementById('lightboxTitle').textContent = item.title;
+            document.getElementById('lightboxCaption').textContent = item.description;
+            
+            document.getElementById('lightboxModal').classList.remove('hidden');
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightboxModal').classList.add('hidden');
+        }
+
+        function prevLightboxImage() {
+            currentLightboxIndex = (currentLightboxIndex - 1 + galleryImages.length) % galleryImages.length;
+            openLightbox(currentLightboxIndex);
+        }
+
+        function nextLightboxImage() {
+            currentLightboxIndex = (currentLightboxIndex + 1) % galleryImages.length;
+            openLightbox(currentLightboxIndex);
+        }
+
+        // -------------------------------------------------------------
         // TABS SWITCHER FOR THE 5 STATIONS
         // -------------------------------------------------------------
         function switchTab(tabIndex) {
-            // Update Tab buttons
             const buttons = document.querySelectorAll('.tab-btn');
             buttons.forEach((btn, idx) => {
                 if (idx + 1 === tabIndex) {
@@ -882,7 +1123,6 @@
                 }
             });
 
-            // Update Tab content panels
             const contents = document.querySelectorAll('.tab-content');
             contents.forEach((content, idx) => {
                 if (idx + 1 === tabIndex) {
@@ -893,13 +1133,10 @@
             });
         }
 
-        // Helper to jump to configurator with a preset selected
         function loadPresetInConfigurator(modelIndex) {
             const select = document.getElementById('cfgModel');
             select.value = modelIndex.toString();
             updatePrice();
-            
-            // Scroll smoothly to configurator
             document.getElementById('configurador').scrollIntoView({ behavior: 'smooth' });
         }
 
@@ -907,23 +1144,19 @@
         // CONFIGURATOR & REAL-TIME PRICE CALCULATOR
         // -------------------------------------------------------------
         function updatePrice() {
-            // 1. Model Price
             const modelSelect = document.getElementById('cfgModel');
             const selectedOption = modelSelect.options[modelSelect.selectedIndex];
             const basePrice = parseInt(selectedOption.getAttribute('data-price') || '385000');
             const modelName = selectedOption.text.split('-')[1].split('(')[0].trim();
 
-            // 2. Wood Option
             const woodRadio = document.querySelector('input[name="woodType"]:checked');
             const woodPrice = parseInt(woodRadio.getAttribute('data-price') || '0');
             const woodName = woodRadio.value;
 
-            // 3. Wheel Option
             const wheelRadio = document.querySelector('input[name="wheelType"]:checked');
             const wheelPrice = parseInt(wheelRadio.getAttribute('data-price') || '0');
             const wheelName = wheelRadio.value;
 
-            // 4. Addons
             const addons = document.querySelectorAll('.cfg-addon:checked');
             let addonsPrice = 0;
             const addonNames = [];
@@ -933,16 +1166,13 @@
                 addonNames.push(addon.getAttribute('data-name'));
             });
 
-            // Total sum
             const totalPrice = basePrice + woodPrice + wheelPrice + addonsPrice;
 
-            // Update UI elements
             document.getElementById('totalPriceDisplay').textContent = '$' + totalPrice.toLocaleString('es-AR');
             document.getElementById('summaryModelName').textContent = modelName;
             document.getElementById('summaryWood').textContent = woodName;
             document.getElementById('summaryWheel').textContent = wheelName;
 
-            // Update Addons UI list
             const addonsListUI = document.getElementById('summaryAddons');
             addonsListUI.innerHTML = '';
             if (addonNames.length === 0) {
@@ -977,7 +1207,6 @@
 
             const totalPrice = document.getElementById('totalPriceDisplay').textContent;
 
-            // Format message
             const message = `Hola HMW! Quisiera cotizar una Estación de Trabajo Móvil:%0A` +
                 `%0A*Modelo:* ${modelText}` +
                 `%0A*Medidas:* 60cm x 90cm x 60cm` +
@@ -988,7 +1217,7 @@
                 `%0A%0A*Precio Estimado Configurado:* ${totalPrice} ARS` +
                 `%0A%0A¿Me confirman disponibilidad y costo de envío?`;
 
-            const phone = "5491134567890"; // Mock sales phone
+            const phone = "5491134567890";
             window.open(`https://wa.me/${phone}?text=${message}`, '_blank');
         }
 
@@ -998,165 +1227,20 @@
             menu.classList.toggle('hidden');
         });
 
-        // -------------------------------------------------------------
-        // CANVAS BLUEPRINT 3D ROTATION SIMULATION
-        // -------------------------------------------------------------
-        const canvas = document.getElementById('blueprintCanvas');
-        const ctx = canvas.getContext('2d');
-        let rotationAngle = 0.4;
-        let isDragging = false;
-        let startX = 0;
-
-        function drawBlueprint() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-            const centerX = canvas.width / 2;
-            const centerY = canvas.height / 2 + 20;
-            const sizeX = 110;
-            const sizeY = 140;
-            const sizeZ = 110;
-
-            const cos = Math.cos(rotationAngle);
-            const sin = Math.sin(rotationAngle);
-
-            // Project 3D coordinate
-            function project(x, y, z) {
-                const rx = x * cos - z * sin;
-                const rz = x * sin + z * cos;
-                const px = centerX + rx;
-                const py = centerY - y + rz * 0.35;
-                return { x: px, y: py };
-            }
-
-            // Define corners of the 60x90x60 workstation
-            const vertices = [
-                // Bottom frame
-                project(-sizeX/2, -sizeY/2, -sizeZ/2),
-                project(sizeX/2, -sizeY/2, -sizeZ/2),
-                project(sizeX/2, -sizeY/2, sizeZ/2),
-                project(-sizeX/2, -sizeY/2, sizeZ/2),
-                // Top frame
-                project(-sizeX/2, sizeY/2, -sizeZ/2),
-                project(sizeX/2, sizeY/2, -sizeZ/2),
-                project(sizeX/2, sizeY/2, sizeZ/2),
-                project(-sizeX/2, sizeY/2, sizeZ/2)
-            ];
-
-            // Set Blueprint line style
-            ctx.strokeStyle = '#00A8FF';
-            ctx.lineWidth = 2;
-            ctx.shadowColor = '#00A8FF';
-            ctx.shadowBlur = 8;
-
-            // Helper to draw edges
-            function drawLine(p1, p2, width=2, color='#00A8FF') {
-                ctx.beginPath();
-                ctx.strokeStyle = color;
-                ctx.lineWidth = width;
-                ctx.moveTo(p1.x, p1.y);
-                ctx.lineTo(p2.x, p2.y);
-                ctx.stroke();
-            }
-
-            // 1. Draw 4 Vertical Legs (40x40 Structural tube representation)
-            drawLine(vertices[0], vertices[4]);
-            drawLine(vertices[1], vertices[5]);
-            drawLine(vertices[2], vertices[6]);
-            drawLine(vertices[3], vertices[7]);
-
-            // 2. Draw Bottom Frame + Wood Lower Shelf
-            drawLine(vertices[0], vertices[1]);
-            drawLine(vertices[1], vertices[2]);
-            drawLine(vertices[2], vertices[3]);
-            drawLine(vertices[3], vertices[0]);
-
-            // 3. Draw Top Frame & Main Wooden Tabletop
-            drawLine(vertices[4], vertices[5]);
-            drawLine(vertices[5], vertices[6]);
-            drawLine(vertices[6], vertices[7]);
-            drawLine(vertices[7], vertices[4]);
-
-            // Draw Wood Grain Lines on top tabletop
-            ctx.fillStyle = 'rgba(0, 168, 255, 0.15)';
-            ctx.beginPath();
-            ctx.moveTo(vertices[4].x, vertices[4].y);
-            ctx.lineTo(vertices[5].x, vertices[5].y);
-            ctx.lineTo(vertices[6].x, vertices[6].y);
-            ctx.lineTo(vertices[7].x, vertices[7].y);
-            ctx.closePath();
-            ctx.fill();
-
-            // 4. Draw Swivel Casters (4 wheels)
-            [0, 1, 2, 3].forEach(idx => {
-                const p = vertices[idx];
-                ctx.beginPath();
-                ctx.fillStyle = '#ffffff';
-                ctx.arc(p.x, p.y + 12, 6, 0, Math.PI * 2);
-                ctx.fill();
-            });
-
-            // 5. Draw Electric Module & Emergency Stop Button on corner
-            const eBox = project(sizeX/2 + 5, sizeY/4, sizeZ/2);
-            ctx.fillStyle = '#ff3333';
-            ctx.beginPath();
-            ctx.arc(eBox.x, eBox.y, 5, 0, Math.PI * 2);
-            ctx.fill();
-
-            // 6. Draw LED Arm Swivel on Top Corner
-            const armBase = vertices[6];
-            const armTop = { x: armBase.x + 20, y: armBase.y - 40 };
-            drawLine(armBase, armTop, 3, '#ffffff');
-            
-            // LED Light Head
-            ctx.fillStyle = '#00A8FF';
-            ctx.beginPath();
-            ctx.arc(armTop.x, armTop.y, 7, 0, Math.PI * 2);
-            ctx.fill();
-
-            // Reset shadow
-            ctx.shadowBlur = 0;
-        }
-
-        // Drag listeners for 3D rotation
-        canvas.addEventListener('mousedown', (e) => {
-            isDragging = true;
-            startX = e.clientX;
-        });
-
-        window.addEventListener('mouseup', () => {
-            isDragging = false;
-        });
-
-        window.addEventListener('mousemove', (e) => {
-            if (isDragging) {
-                const deltaX = e.clientX - startX;
-                rotationAngle += deltaX * 0.01;
-                startX = e.clientX;
-                drawBlueprint();
-            }
-        });
-
-        // Touch support for mobile canvas interaction
-        canvas.addEventListener('touchstart', (e) => {
-            isDragging = true;
-            startX = e.touches[0].clientX;
-        });
-        window.addEventListener('touchend', () => {
-            isDragging = false;
-        });
-        window.addEventListener('touchmove', (e) => {
-            if (isDragging) {
-                const deltaX = e.touches[0].clientX - startX;
-                rotationAngle += deltaX * 0.01;
-                startX = e.touches[0].clientX;
-                drawBlueprint();
+        // Keyboard navigation for Lightbox modal
+        window.addEventListener('keydown', (e) => {
+            const lightbox = document.getElementById('lightboxModal');
+            if (!lightbox.classList.contains('hidden')) {
+                if (e.key === 'Escape') closeLightbox();
+                if (e.key === 'ArrowLeft') prevLightboxImage();
+                if (e.key === 'ArrowRight') nextLightboxImage();
             }
         });
 
         // Initial setup on page load
         window.onload = function() {
             updatePrice();
-            drawBlueprint();
+            renderGallery();
         };
     </script>
 </body>
