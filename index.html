@@ -1,13 +1,1162 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" href="images/favicon.ico">
-    <title>HMW</title>
+    <title>HMW | Estaciones de Trabajo Móviles de Hierro y Madera</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome for technical icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Space Grotesk & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            blue: '#00A8FF',
+                            blueDark: '#0077B6',
+                            dark: '#0F1115',
+                            card: '#161920',
+                            steel: '#2A2F3A',
+                            border: '#383F4D',
+                            light: '#E2E8F0',
+                            accent: '#00A8FF'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        tech: ['Space Grotesk', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        /* Custom Blueprint & Industrial BG Effects */
+        .bg-grid-pattern {
+            background-image: radial-gradient(rgba(0, 168, 255, 0.15) 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+        .bg-blueprint {
+            background-color: #0d1117;
+            background-image: 
+                linear-gradient(rgba(0, 168, 255, 0.07) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 168, 255, 0.07) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+        .text-glow {
+            text-shadow: 0 0 12px rgba(0, 168, 255, 0.5);
+        }
+        /* Custom scrollbars */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0F1115;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2A2F3A;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #00A8FF;
+        }
+    </style>
 </head>
-<body>
-    <h1>HMW</h1>
-    <p>Sitio oficial</p>
+<body class="bg-brand-dark text-gray-200 font-sans antialiased selection:bg-brand-blue selection:text-black">
+
+    <!-- HEADER / NAVIGATION -->
+    <header class="sticky top-0 z-50 bg-brand-dark/90 backdrop-blur-md border-b border-brand-border/60">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Brand Logo -->
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 bg-brand-blue text-black font-tech font-bold text-xl flex items-center justify-center rounded-sm tracking-tighter group-hover:bg-white transition-colors">
+                    HMW
+                </div>
+                <div>
+                    <span class="font-tech font-bold text-xl tracking-wider text-white block leading-none">HOME MOBILE WORK</span>
+                    <span class="text-[10px] text-brand-blue uppercase font-mono tracking-widest block mt-1">Estaciones Industriales 60x90</span>
+                </div>
+            </a>
+
+            <!-- Navigation Links -->
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium tracking-wide">
+                <a href="#plataforma" class="hover:text-brand-blue transition-colors">Plataforma Base</a>
+                <a href="#modelos" class="hover:text-brand-blue transition-colors">Estaciones</a>
+                <a href="#seguridad" class="hover:text-brand-blue transition-colors">Seguridad Eléctrica</a>
+                <a href="#configurador" class="hover:text-brand-blue transition-colors">Configurador Live</a>
+                <a href="#calidad" class="hover:text-brand-blue transition-colors">Calidad</a>
+            </nav>
+
+            <!-- Action Button -->
+            <div class="flex items-center gap-3">
+                <a href="#configurador" class="hidden sm:inline-flex items-center gap-2 bg-brand-blue hover:bg-cyan-400 text-black font-semibold px-4 py-2.5 rounded-sm text-sm tracking-wide transition-all shadow-[0_0_15px_rgba(0,168,255,0.3)]">
+                    <i class="fa-solid fa-sliders"></i>
+                    <span>Cotizar Estación</span>
+                </a>
+                <button id="mobileMenuBtn" class="md:hidden text-gray-300 hover:text-white p-2">
+                    <i class="fa-solid fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobileMenu" class="hidden md:hidden bg-brand-card border-b border-brand-border px-4 pt-2 pb-6 space-y-3">
+            <a href="#plataforma" class="block py-2 text-gray-300 hover:text-brand-blue">Plataforma Base</a>
+            <a href="#modelos" class="block py-2 text-gray-300 hover:text-brand-blue">Estaciones Específicas</a>
+            <a href="#seguridad" class="block py-2 text-gray-300 hover:text-brand-blue">Seguridad Eléctrica</a>
+            <a href="#configurador" class="block py-2 text-brand-blue font-bold">Configurador y Cotizador</a>
+            <a href="#calidad" class="block py-2 text-gray-300 hover:text-brand-blue">Proceso Constructivo</a>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="relative min-h-[90vh] flex items-center justify-center pt-12 pb-20 bg-blueprint overflow-hidden">
+        <!-- Overlay Grid Gradient -->
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-brand-dark/80 to-brand-dark"></div>
+
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Left Hero Column -->
+                <div class="lg:col-span-7 space-y-6">
+                    <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-sm bg-brand-border/60 border border-brand-blue/30 text-brand-blue text-xs font-mono uppercase tracking-widest">
+                        <span class="w-2 h-2 rounded-full bg-brand-blue animate-pulse"></span>
+                        Caño Estructural 40x40 mm • Industria Argentina
+                    </div>
+                    
+                    <h1 class="text-4xl sm:text-6xl font-tech font-bold text-white tracking-tight leading-tight">
+                        ESTACIONES MÓVILES DE TRABAJO <span class="text-brand-blue">ROBUSTAS & MODULARES</span>
+                    </h1>
+
+                    <p class="text-gray-400 text-lg sm:text-xl max-w-2xl font-normal leading-relaxed">
+                        Diseñadas para tareas manuales exigentes. Plataforma estándar de <strong class="text-white">60x90x60 cm</strong> en acero pesado y madera de alta densidad, equipada con sistema eléctrico seguro y luz LED direccionable.
+                    </p>
+
+                    <!-- Tech Badges Grid -->
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2 font-mono text-xs text-gray-300">
+                        <div class="p-3 bg-brand-card/90 border border-brand-border rounded-sm">
+                            <i class="fa-solid fa-cube text-brand-blue mb-1 block text-lg"></i>
+                            <span class="block text-gray-400 text-[10px]">ESTRUCTURA</span>
+                            <strong>Caño 40x40 mm</strong>
+                        </div>
+                        <div class="p-3 bg-brand-card/90 border border-brand-border rounded-sm">
+                            <i class="fa-solid fa-shield-halved text-brand-blue mb-1 block text-lg"></i>
+                            <span class="block text-gray-400 text-[10px]">SEGURIDAD</span>
+                            <strong>Parada Emergencia</strong>
+                        </div>
+                        <div class="p-3 bg-brand-card/90 border border-brand-border rounded-sm">
+                            <i class="fa-solid fa-plug text-brand-blue mb-1 block text-lg"></i>
+                            <span class="block text-gray-400 text-[10px]">CABLE TALLER</span>
+                            <strong>10m Reforzado</strong>
+                        </div>
+                        <div class="p-3 bg-brand-card/90 border border-brand-border rounded-sm">
+                            <i class="fa-solid fa-arrows-spin text-brand-blue mb-1 block text-lg"></i>
+                            <span class="block text-gray-400 text-[10px]">MOVILIDAD</span>
+                            <strong>Ruedas Carrito</strong>
+                        </div>
+                    </div>
+
+                    <!-- Call to action -->
+                    <div class="pt-4 flex flex-col sm:flex-row gap-4">
+                        <a href="#configurador" class="inline-flex items-center justify-center gap-3 bg-brand-blue hover:bg-cyan-400 text-black font-tech font-bold text-base px-8 py-4 rounded-sm transition-all shadow-[0_0_20px_rgba(0,168,255,0.4)]">
+                            <span>CONFIGURAR MI ESTACIÓN</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                        <a href="#modelos" class="inline-flex items-center justify-center gap-2 bg-brand-steel/80 hover:bg-brand-steel text-white border border-brand-border font-medium text-base px-6 py-4 rounded-sm transition-all">
+                            <i class="fa-solid fa-layer-group text-brand-blue"></i>
+                            <span>Ver 5 Modelos</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right Hero Column: Blueprint Visualizer Box -->
+                <div class="lg:col-span-5">
+                    <div class="relative bg-brand-card border-2 border-brand-blue/40 rounded-sm p-6 shadow-2xl bg-grid-pattern">
+                        <!-- Blueprint Watermark Header -->
+                        <div class="flex justify-between items-center border-b border-brand-border pb-3 mb-4 font-mono text-xs text-brand-blue">
+                            <span>ESQUEMA TÉCNICO V1.0</span>
+                            <span class="bg-brand-blue/10 px-2 py-0.5 border border-brand-blue/30 rounded text-[10px]">600 x 900 x 600 mm</span>
+                        </div>
+
+                        <!-- Canvas Drawing Area -->
+                        <div class="relative w-full aspect-square bg-brand-dark/90 border border-brand-border flex items-center justify-center rounded-sm overflow-hidden p-2">
+                            <canvas id="blueprintCanvas" width="400" height="400" class="w-full h-full object-contain cursor-grab active:cursor-grabbing"></canvas>
+                            <div class="absolute bottom-2 left-2 text-[10px] font-mono text-gray-400 bg-black/60 px-2 py-1 rounded">
+                                <i class="fa-solid fa-rotate text-brand-blue mr-1"></i> Arrastra horizontalmente para rotar vista 3D
+                            </div>
+                        </div>
+
+                        <!-- Technical Spec Summary list -->
+                        <div class="mt-4 grid grid-cols-2 gap-2 text-xs font-mono text-gray-300">
+                            <div class="bg-brand-dark p-2 border border-brand-border/80">
+                                <span class="text-gray-400 block text-[10px]">TABLERO SUPERIOR:</span>
+                                <span>Madera Maciza / Fenólico</span>
+                            </div>
+                            <div class="bg-brand-dark p-2 border border-brand-border/80">
+                                <span class="text-gray-400 block text-[10px]">BRAZO ILUMINACIÓN:</span>
+                                <span>Giro 360° en 4 patas</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ANATOMIA DE LA PLATAFORMA BASE -->
+    <section id="plataforma" class="py-20 bg-brand-dark border-t border-brand-border/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-brand-blue font-mono text-xs uppercase tracking-widest font-semibold block mb-2">// ADN INDUSTRIAL</span>
+                <h2 class="text-3xl sm:text-4xl font-tech font-bold text-white uppercase tracking-tight">Plataforma Móvil Base</h2>
+                <p class="text-gray-400 mt-3 text-base">
+                    Todas las estaciones comparten la misma estructura ultra-resistente fabricada con herrería pesada de caño 40x40 mm. Diseñada para soportar condiciones extremas de taller.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="bg-brand-card p-6 border border-brand-border hover:border-brand-blue/50 transition-all rounded-sm group">
+                    <div class="w-12 h-12 bg-brand-steel rounded-sm flex items-center justify-center text-brand-blue text-2xl mb-4 group-hover:bg-brand-blue group-hover:text-black transition-colors">
+                        <i class="fa-solid fa-cube"></i>
+                    </div>
+                    <h3 class="font-tech font-bold text-xl text-white mb-2">Chasis de Caño 40x40</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Estructura soldada por proceso MIG con tubo de acero estructural de 40x40 mm. Pintura electrostática epoxi con curado al horno para alta resistencia a impactos y solventes.
+                    </p>
+                    <ul class="mt-4 space-y-2 text-xs font-mono text-gray-300 border-t border-brand-border/60 pt-4">
+                        <li><i class="fa-solid fa-check text-brand-blue mr-2"></i>Medidas: 60 cm Ancho x 90 cm Alto x 60 cm Profundidad</li>
+                        <li><i class="fa-solid fa-check text-brand-blue mr-2"></i>Capacidad de carga: +250 kg</li>
+                    </ul>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="bg-brand-card p-6 border border-brand-border hover:border-brand-blue/50 transition-all rounded-sm group">
+                    <div class="w-12 h-12 bg-brand-steel rounded-sm flex items-center justify-center text-brand-blue text-2xl mb-4 group-hover:bg-brand-blue group-hover:text-black transition-colors">
+                        <i class="fa-solid fa-bolt"></i>
+                    </div>
+                    <h3 class="font-tech font-bold text-xl text-white mb-2">Centro de Mando Eléctrico</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Módulo integrado de energía con 4/5 bocas 220V + puertos USB / USB-C. Seguridad total mediante Disyuntor térmico/diferencial y Botón de Parada de Emergencia tipo hongo.
+                    </p>
+                    <ul class="mt-4 space-y-2 text-xs font-mono text-gray-300 border-t border-brand-border/60 pt-4">
+                        <li><i class="fa-solid fa-check text-brand-blue mr-2"></i>Cable tipo taller reforzado de 10 metros</li>
+                        <li><i class="fa-solid fa-check text-brand-blue mr-2"></i>Protección diferencial + Térmica integrada</li>
+                    </ul>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="bg-brand-card p-6 border border-brand-border hover:border-brand-blue/50 transition-all rounded-sm group">
+                    <div class="w-12 h-12 bg-brand-steel rounded-sm flex items-center justify-center text-brand-blue text-2xl mb-4 group-hover:bg-brand-blue group-hover:text-black transition-colors">
+                        <i class="fa-solid fa-lightbulb"></i>
+                    </div>
+                    <h3 class="font-tech font-bold text-xl text-white mb-2">Brazo LED Giro 360°</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Brazo articulado direccional que se acopla mediante encastre rápido a cualquiera de las 4 patas tubulares de la mesa. Luminaria LED focalizada para trabajo de alta precisión.
+                    </p>
+                    <ul class="mt-4 space-y-2 text-xs font-mono text-gray-300 border-t border-brand-border/60 pt-4">
+                        <li><i class="fa-solid fa-check text-brand-blue mr-2"></i>Intercambiable a cualquiera de los 4 vértices</li>
+                        <li><i class="fa-solid fa-check text-brand-blue mr-2"></i>Luz fría neutra especial para tareas manuales</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CATALOGO / LAS 5 ESTACIONES ESPECIALIZADAS -->
+    <section id="modelos" class="py-20 bg-brand-card border-t border-brand-border/60">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+                <div>
+                    <span class="text-brand-blue font-mono text-xs uppercase tracking-widest font-semibold block mb-2">// ESPECIALIZACIÓN POR OFICIO</span>
+                    <h2 class="text-3xl sm:text-4xl font-tech font-bold text-white uppercase">Las 5 Estaciones HMW</h2>
+                </div>
+                <p class="text-gray-400 max-w-md text-sm mt-4 md:mt-0">
+                    Misma plataforma estructural ultra-robusta de 60x90x60, personalizada con los accesorios específicos para tu disciplina manual.
+                </p>
+            </div>
+
+            <!-- Model Tabs Header -->
+            <div class="flex space-x-2 overflow-x-auto pb-4 border-b border-brand-border" id="modelTabs">
+                <button onclick="switchTab(1)" id="tab-1" class="tab-btn active font-tech px-5 py-3 text-sm font-bold whitespace-nowrap rounded-t-sm border-b-2 transition-all border-brand-blue bg-brand-steel text-white">
+                    1. Tareas Generales
+                </button>
+                <button onclick="switchTab(2)" id="tab-2" class="tab-btn font-tech px-5 py-3 text-sm font-bold whitespace-nowrap rounded-t-sm border-b-2 transition-all border-transparent hover:text-white text-gray-400">
+                    2. Electricidad / Electrónica
+                </button>
+                <button onclick="switchTab(3)" id="tab-3" class="tab-btn font-tech px-5 py-3 text-sm font-bold whitespace-nowrap rounded-t-sm border-b-2 transition-all border-transparent hover:text-white text-gray-400">
+                    3. Mecánica
+                </button>
+                <button onclick="switchTab(4)" id="tab-4" class="tab-btn font-tech px-5 py-3 text-sm font-bold whitespace-nowrap rounded-t-sm border-b-2 transition-all border-transparent hover:text-white text-gray-400">
+                    4. Herrería
+                </button>
+                <button onclick="switchTab(5)" id="tab-5" class="tab-btn font-tech px-5 py-3 text-sm font-bold whitespace-nowrap rounded-t-sm border-b-2 transition-all border-transparent hover:text-white text-gray-400">
+                    5. Carpintería
+                </button>
+            </div>
+
+            <!-- Tab Contents Container -->
+            <div class="mt-8 bg-brand-dark p-6 sm:p-8 border border-brand-border rounded-sm">
+                
+                <!-- MODEL 1: TAREAS GENERALES -->
+                <div id="content-1" class="tab-content grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                    <div class="lg:col-span-7 space-y-4">
+                        <div class="inline-block text-xs font-mono bg-brand-blue/10 text-brand-blue px-2.5 py-1 border border-brand-blue/30 rounded">
+                            ESTACIÓN MULTIPROPÓSITO MÓVIL
+                        </div>
+                        <h3 class="text-2xl sm:text-3xl font-tech font-bold text-white">Estación para Tareas Generales</h3>
+                        <p class="text-gray-300 text-sm leading-relaxed">
+                            Diseñada para talleres multipropósito, mantenimiento industrial ligero y hobbistas exigentes. Es la mesa auxiliar móvil definitiva: compacta para guardarse en cualquier rincón y robusta para aguantar trabajo pesado.
+                        </p>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+                            <div class="bg-brand-card p-3 border border-brand-border">
+                                <strong class="text-white text-xs font-mono block mb-1"><i class="fa-solid fa-wrench text-brand-blue mr-2"></i>Equipamiento Incluido:</strong>
+                                <p class="text-gray-400 text-xs">Tablero superior de eucalipto 30mm, bandeja inferior con contención de objetos, organizador lateral de herramientas manuales.</p>
+                            </div>
+                            <div class="bg-brand-card p-3 border border-brand-border">
+                                <strong class="text-white text-xs font-mono block mb-1"><i class="fa-solid fa-sliders text-brand-blue mr-2"></i>Uso recomendado:</strong>
+                                <p class="text-gray-400 text-xs">Armado, reparaciones del hogar, mantenimiento de herramientas, banco móvil auxiliar de taller.</p>
+                            </div>
+                        </div>
+                        <div class="pt-4">
+                            <button onclick="loadPresetInConfigurator(1)" class="bg-brand-blue hover:bg-cyan-400 text-black font-tech font-bold text-sm px-6 py-3 rounded-sm transition-all inline-flex items-center gap-2">
+                                <span>Personalizar este Modelo en el Configurador</span>
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="lg:col-span-5 bg-brand-steel/40 p-6 border border-brand-border rounded text-center">
+                        <div class="w-24 h-24 mx-auto bg-brand-blue/20 text-brand-blue rounded-full flex items-center justify-center text-4xl mb-4 border border-brand-blue/40">
+                            <i class="fa-solid fa-toolbox"></i>
+                        </div>
+                        <span class="font-mono text-xs text-gray-400 block">CONFIGURACIÓN BASE DE SERIE</span>
+                        <h4 class="font-tech font-bold text-lg text-white mt-1">HMW GENERAL WORKSTATION</h4>
+                        <span class="text-2xl font-tech font-bold text-brand-blue block my-2">$385.000 ARS</span>
+                        <span class="text-xs text-gray-400 font-mono">Incluye modulo eléctrico completo, parada de emergencia y brazo LED</span>
+                    </div>
+                </div>
+
+                <!-- MODEL 2: ELECTRICIDAD / ELECTRONICA -->
+                <div id="content-2" class="tab-content hidden grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                    <div class="lg:col-span-7 space-y-4">
+                        <div class="inline-block text-xs font-mono bg-brand-blue/10 text-brand-blue px-2.5 py-1 border border-brand-blue/30 rounded">
+                            PROTECCIÓN ESD & CABLE MGT
+                        </div>
+                        <h3 class="text-2xl sm:text-3xl font-tech font-bold text-white">Estación para Electricidad y Electrónica</h3>
+                        <p class="text-gray-300 text-sm leading-relaxed">
+                            Acondicionada especialmente para evitar sobrecargas y mantener el área de soldadura/medición perfectamente limpia y aislada. Soporte integrado para cautín y multímetro.
+                        </p>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+                            <div class="bg-brand-card p-3 border border-brand-border">
+                                <strong class="text-white text-xs font-mono block mb-1"><i class="fa-solid fa-microchip text-brand-blue mr-2"></i>Accesorios Integrados:</strong>
+                                <p class="text-gray-400 text-xs">Manta antiestática (ESD) extraíble, soporte para soldador de estaño con esponja, repisa para osciloscopio/multímetro, organizador de cables.</p>
+                            </div>
+                            <div class="bg-brand-card p-3 border border-brand-border">
+                                <strong class="text-white text-xs font-mono block mb-1"><i class="fa-solid fa-bolt text-brand-blue mr-2"></i>Seguridad Eléctrica Extra:</strong>
+                                <p class="text-gray-400 text-xs">Aislamiento de superficie, tomas con toma a tierra verificada y puertos USB/USB-C rápidos para instrumental.</p>
+                            </div>
+                        </div>
+                        <div class="pt-4">
+                            <button onclick="loadPresetInConfigurator(2)" class="bg-brand-blue hover:bg-cyan-400 text-black font-tech font-bold text-sm px-6 py-3 rounded-sm transition-all inline-flex items-center gap-2">
+                                <span>Personalizar Modelo Electricidad</span>
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="lg:col-span-5 bg-brand-steel/40 p-6 border border-brand-border rounded text-center">
+                        <div class="w-24 h-24 mx-auto bg-brand-blue/20 text-brand-blue rounded-full flex items-center justify-center text-4xl mb-4 border border-brand-blue/40">
+                            <i class="fa-solid fa-plug-circle-bolt"></i>
+                        </div>
+                        <span class="font-mono text-xs text-gray-400 block">CONFIGURACIÓN BASE DE SERIE</span>
+                        <h4 class="font-tech font-bold text-lg text-white mt-1">HMW ELEC-PRO WORKSTATION</h4>
+                        <span class="text-2xl font-tech font-bold text-brand-blue block my-2">$420.000 ARS</span>
+                        <span class="text-xs text-gray-400 font-mono">Incluye soporte de cautín y protección disyuntor especial</span>
+                    </div>
+                </div>
+
+                <!-- MODEL 3: MECANICA -->
+                <div id="content-3" class="tab-content hidden grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                    <div class="lg:col-span-7 space-y-4">
+                        <div class="inline-block text-xs font-mono bg-brand-blue/10 text-brand-blue px-2.5 py-1 border border-brand-blue/30 rounded">
+                            RESISTENCIA A ACEITES Y CARGA PESADA
+                        </div>
+                        <h3 class="text-2xl sm:text-3xl font-tech font-bold text-white">Estación para Mecánica</h3>
+                        <p class="text-gray-300 text-sm leading-relaxed">
+                            Diseñada para soportar desarme de motores, cajas de cambio o piezas con grasa. Incluye borde perimetral para evitar caídas de piezas redondas y fluidos.
+                        </p>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+                            <div class="bg-brand-card p-3 border border-brand-border">
+                                <strong class="text-white text-xs font-mono block mb-1"><i class="fa-solid fa-oil-can text-brand-blue mr-2"></i>Accesorios Integrados:</strong>
+                                <p class="text-gray-400 text-xs">Bandeja de chapa superior antigoteo/receptora de aceite, soporte porta trapos y limpiador, ganchos laterales para llaves combinadas y tubos.</p>
+                            </div>
+                            <div class="bg-brand-card p-3 border border-brand-border">
+                                <strong class="text-white text-xs font-mono block mb-1"><i class="fa-solid fa-truck-monster text-brand-blue mr-2"></i>Ruedas Reforzadas:</strong>
+                                <p class="text-gray-400 text-xs">Ruedas con banda de poliuretano industrial de mayor diámetro resistentes a hidrocarburos y viruta de metal.</p>
+                            </div>
+                        </div>
+                        <div class="pt-4">
+                            <button onclick="loadPresetInConfigurator(3)" class="bg-brand-blue hover:bg-cyan-400 text-black font-tech font-bold text-sm px-6 py-3 rounded-sm transition-all inline-flex items-center gap-2">
+                                <span>Personalizar Modelo Mecánica</span>
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="lg:col-span-5 bg-brand-steel/40 p-6 border border-brand-border rounded text-center">
+                        <div class="w-24 h-24 mx-auto bg-brand-blue/20 text-brand-blue rounded-full flex items-center justify-center text-4xl mb-4 border border-brand-blue/40">
+                            <i class="fa-solid fa-gears"></i>
+                        </div>
+                        <span class="font-mono text-xs text-gray-400 block">CONFIGURACIÓN BASE DE SERIE</span>
+                        <h4 class="font-tech font-bold text-lg text-white mt-1">HMW MECHANIC WORKSTATION</h4>
+                        <span class="text-2xl font-tech font-bold text-brand-blue block my-2">$445.000 ARS</span>
+                        <span class="text-xs text-gray-400 font-mono">Incluye bandeja receptora y ruedas de poliuretano pesadas</span>
+                    </div>
+                </div>
+
+                <!-- MODEL 4: HERRERIA -->
+                <div id="content-4" class="tab-content hidden grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                    <div class="lg:col-span-7 space-y-4">
+                        <div class="inline-block text-xs font-mono bg-brand-blue/10 text-brand-blue px-2.5 py-1 border border-brand-blue/30 rounded">
+                            PROTECCIÓN CONTRA CHISPAS Y CALOR
+                        </div>
+                        <h3 class="text-2xl sm:text-3xl font-tech font-bold text-white">Estación para Herrería y Metalúrgica</h3>
+                        <p class="text-gray-300 text-sm leading-relaxed">
+                            Diseñada para soldadores y amoladores. Reemplaza la tapa de madera por chapa de acero de gran espesor o multilaminado ignífugo recubierto con soporte para morsa.
+                        </p>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+                            <div class="bg-brand-card p-3 border border-brand-border">
+                                <strong class="text-white text-xs font-mono block mb-1"><i class="fa-solid fa-fire text-brand-blue mr-2"></i>Accesorios Integrados:</strong>
+                                <p class="text-gray-400 text-xs">Soporte rápido para amoladora de 4.5", ganchos portacables de soldadora MIG/MMA, soporte reforzado para morsa/prensa de banco N°3 o N°4.</p>
+                            </div>
+                            <div class="bg-brand-card p-3 border border-brand-border">
+                                <strong class="text-white text-xs font-mono block mb-1"><i class="fa-solid fa-shield text-brand-blue mr-2"></i>Resistencia Térmica:</strong>
+                                <p class="text-gray-400 text-xs">Tratamiento de chapa de impacto directo de chispas y calor sin deformaciones.</p>
+                            </div>
+                        </div>
+                        <div class="pt-4">
+                            <button onclick="loadPresetInConfigurator(4)" class="bg-brand-blue hover:bg-cyan-400 text-black font-tech font-bold text-sm px-6 py-3 rounded-sm transition-all inline-flex items-center gap-2">
+                                <span>Personalizar Modelo Herrería</span>
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="lg:col-span-5 bg-brand-steel/40 p-6 border border-brand-border rounded text-center">
+                        <div class="w-24 h-24 mx-auto bg-brand-blue/20 text-brand-blue rounded-full flex items-center justify-center text-4xl mb-4 border border-brand-blue/40">
+                            <i class="fa-solid fa-hammer"></i>
+                        </div>
+                        <span class="font-mono text-xs text-gray-400 block">CONFIGURACIÓN BASE DE SERIE</span>
+                        <h4 class="font-tech font-bold text-lg text-white mt-1">HMW METAL-FORGE WORKSTATION</h4>
+                        <span class="text-2xl font-tech font-bold text-brand-blue block my-2">$460.000 ARS</span>
+                        <span class="text-xs text-gray-400 font-mono">Incluye porta amoladora y placa de amarre de morsa</span>
+                    </div>
+                </div>
+
+                <!-- MODEL 5: CARPINTERIA -->
+                <div id="content-5" class="tab-content hidden grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                    <div class="lg:col-span-7 space-y-4">
+                        <div class="inline-block text-xs font-mono bg-brand-blue/10 text-brand-blue px-2.5 py-1 border border-brand-blue/30 rounded">
+                            PRECISIÓN EN MADERA & SUJECIÓN
+                        </div>
+                        <h3 class="text-2xl sm:text-3xl font-tech font-bold text-white">Estación para Carpintería</h3>
+                        <p class="text-gray-300 text-sm leading-relaxed">
+                            Optimizado para trabajos con tirantes, lijado, cepillado y ensambles. Incorpora topes de banco ajustables y sistema de prensado rápido para sujetar tirantes.
+                        </p>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+                            <div class="bg-brand-card p-3 border border-brand-border">
+                                <strong class="text-white text-xs font-mono block mb-1"><i class="fa-solid fa-tree text-brand-blue mr-2"></i>Accesorios Integrados:</strong>
+                                <p class="text-gray-400 text-xs">Tablero de madera maciza Guatambú/Eucalipto con orificios perforados estilo bench dogs, prensa/sargento de banco lateral, ganchos porta cepillo y lijadora.</p>
+                            </div>
+                            <div class="bg-brand-card p-3 border border-brand-border">
+                                <strong class="text-white text-xs font-mono block mb-1"><i class="fa-solid fa-broom text-brand-blue mr-2"></i>Gestión de Polvo:</strong>
+                                <p class="text-gray-400 text-xs">Soporte especial para enganche de aspiradora industrial y encendido sincronizado en panel.</p>
+                            </div>
+                        </div>
+                        <div class="pt-4">
+                            <button onclick="loadPresetInConfigurator(5)" class="bg-brand-blue hover:bg-cyan-400 text-black font-tech font-bold text-sm px-6 py-3 rounded-sm transition-all inline-flex items-center gap-2">
+                                <span>Personalizar Modelo Carpintería</span>
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="lg:col-span-5 bg-brand-steel/40 p-6 border border-brand-border rounded text-center">
+                        <div class="w-24 h-24 mx-auto bg-brand-blue/20 text-brand-blue rounded-full flex items-center justify-center text-4xl mb-4 border border-brand-blue/40">
+                            <i class="fa-solid fa-ruler-combined"></i>
+                        </div>
+                        <span class="font-mono text-xs text-gray-400 block">CONFIGURACIÓN BASE DE SERIE</span>
+                        <h4 class="font-tech font-bold text-lg text-white mt-1">HMW WOOD-CRAFT WORKSTATION</h4>
+                        <span class="text-2xl font-tech font-bold text-brand-blue block my-2">$435.000 ARS</span>
+                        <span class="text-xs text-gray-400 font-mono">Incluye tablero perforado macizo y prensa sargento lateral</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CONFIGURADOR Y COTIZADOR EN TIEMPO REAL -->
+    <section id="configurador" class="py-20 bg-blueprint border-t border-brand-border">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="text-brand-blue font-mono text-xs uppercase tracking-widest font-semibold block mb-2">// SIMULADOR INTERACTIVO</span>
+                <h2 class="text-3xl sm:text-4xl font-tech font-bold text-white uppercase">Configura tu Estación HMW</h2>
+                <p class="text-gray-400 mt-2 text-sm">
+                    Selecciona el modelo base, materiales y accesorios. El precio se calculará instantáneamente y podrás pedir tu cotización directa por WhatsApp.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                
+                <!-- Left Column: Configuration Options -->
+                <div class="lg:col-span-7 space-y-6">
+                    
+                    <!-- STEP 1: MODELO BASE -->
+                    <div class="bg-brand-card p-6 border border-brand-border rounded-sm">
+                        <label class="block font-tech font-bold text-white text-lg mb-3 flex items-center gap-2">
+                            <span class="w-6 h-6 bg-brand-blue text-black text-xs font-mono rounded-full flex items-center justify-center">1</span>
+                            Selecciona el Modelo Base:
+                        </label>
+                        <select id="cfgModel" onchange="updatePrice()" class="w-full bg-brand-dark border border-brand-border text-white text-sm p-3 rounded-sm focus:border-brand-blue outline-none font-mono">
+                            <option value="1" data-price="385000">1 - Estación Tareas Generales (Base) - $385.000</option>
+                            <option value="2" data-price="420000">2 - Estación Electricidad / Electrónica - $420.000</option>
+                            <option value="3" data-price="445000">3 - Estación Mecánica - $445.000</option>
+                            <option value="4" data-price="460000">4 - Estación Herrería - $460.000</option>
+                            <option value="5" data-price="435000">5 - Estación Carpintería - $435.000</option>
+                        </select>
+                    </div>
+
+                    <!-- STEP 2: TIPO DE TABLERO DE MADERA -->
+                    <div class="bg-brand-card p-6 border border-brand-border rounded-sm">
+                        <label class="block font-tech font-bold text-white text-lg mb-3 flex items-center gap-2">
+                            <span class="w-6 h-6 bg-brand-blue text-black text-xs font-mono rounded-full flex items-center justify-center">2</span>
+                            Tipo de Tablero de Madera (60x90 cm):
+                        </label>
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                            <label class="cursor-pointer border border-brand-border bg-brand-dark p-3 rounded text-xs font-mono flex items-center gap-2 hover:border-brand-blue">
+                                <input type="radio" name="woodType" value="Eucalipto All-Wood" data-price="0" checked onchange="updatePrice()" class="accent-brand-blue">
+                                <div>
+                                    <strong class="block text-white">Eucalipto 30mm</strong>
+                                    <span class="text-gray-400">Incluido (Estándar)</span>
+                                </div>
+                            </label>
+                            <label class="cursor-pointer border border-brand-border bg-brand-dark p-3 rounded text-xs font-mono flex items-center gap-2 hover:border-brand-blue">
+                                <input type="radio" name="woodType" value="Guatambú Premium" data-price="35000" onchange="updatePrice()" class="accent-brand-blue">
+                                <div>
+                                    <strong class="block text-white">Guatambú Dureza Alta</strong>
+                                    <span class="text-brand-blue">+$35.000</span>
+                                </div>
+                            </label>
+                            <label class="cursor-pointer border border-brand-border bg-brand-dark p-3 rounded text-xs font-mono flex items-center gap-2 hover:border-brand-blue">
+                                <input type="radio" name="woodType" value="Multilaminado Pino Heavy" data-price="20000" onchange="updatePrice()" class="accent-brand-blue">
+                                <div>
+                                    <strong class="block text-white">Multilaminado Fenólico</strong>
+                                    <span class="text-brand-blue">+$20.000</span>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- STEP 3: TIPO DE RUEDAS -->
+                    <div class="bg-brand-card p-6 border border-brand-border rounded-sm">
+                        <label class="block font-tech font-bold text-white text-lg mb-3 flex items-center gap-2">
+                            <span class="w-6 h-6 bg-brand-blue text-black text-xs font-mono rounded-full flex items-center justify-center">3</span>
+                            Juego de Ruedas Giratorias con Freno:
+                        </label>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                            <label class="cursor-pointer border border-brand-border bg-brand-dark p-3 rounded text-xs font-mono flex items-center gap-2 hover:border-brand-blue">
+                                <input type="radio" name="wheelType" value="Goma Industrial Carrito" data-price="0" checked onchange="updatePrice()" class="accent-brand-blue">
+                                <div>
+                                    <strong class="block text-white">Goma Industrial Carrito</strong>
+                                    <span class="text-gray-400">Silenciosas / Incluidas</span>
+                                </div>
+                            </label>
+                            <label class="cursor-pointer border border-brand-border bg-brand-dark p-3 rounded text-xs font-mono flex items-center gap-2 hover:border-brand-blue">
+                                <input type="radio" name="wheelType" value="Poliuretano Carga Pesada Doble Freno" data-price="28000" onchange="updatePrice()" class="accent-brand-blue">
+                                <div>
+                                    <strong class="block text-white">Poliuretano Carga Pesada</strong>
+                                    <span class="text-brand-blue">+$28.000 (Soporta aceites)</span>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- STEP 4: ACCESORIOS MÓDULOS EXTRA -->
+                    <div class="bg-brand-card p-6 border border-brand-border rounded-sm">
+                        <label class="block font-tech font-bold text-white text-lg mb-3 flex items-center gap-2">
+                            <span class="w-6 h-6 bg-brand-blue text-black text-xs font-mono rounded-full flex items-center justify-center">4</span>
+                            Accesorios Adicionales Opcionales:
+                        </label>
+                        <div class="space-y-2">
+                            <label class="cursor-pointer border border-brand-border bg-brand-dark p-3 rounded text-xs font-mono flex items-center justify-between hover:border-brand-blue">
+                                <span class="flex items-center gap-2 text-white">
+                                    <input type="checkbox" class="cfg-addon accent-brand-blue" data-name="Morsa / Prensa de Banco N°3" data-price="45000" onchange="updatePrice()">
+                                    Morsa / Prensa de Banco N°3 con soporte soldado
+                                </span>
+                                <span class="text-brand-blue font-bold">+$45.000</span>
+                            </label>
+                            <label class="cursor-pointer border border-brand-border bg-brand-dark p-3 rounded text-xs font-mono flex items-center justify-between hover:border-brand-blue">
+                                <span class="flex items-center gap-2 text-white">
+                                    <input type="checkbox" class="cfg-addon accent-brand-blue" data-name="Panel Perforado Porta-Herramientas Integrado" data-price="32000" onchange="updatePrice()">
+                                    Panel Perforado de Chapa Porta-Herramientas
+                                </span>
+                                <span class="text-brand-blue font-bold">+$32.000</span>
+                            </label>
+                            <label class="cursor-pointer border border-brand-border bg-brand-dark p-3 rounded text-xs font-mono flex items-center justify-between hover:border-brand-blue">
+                                <span class="flex items-center gap-2 text-white">
+                                    <input type="checkbox" class="cfg-addon accent-brand-blue" data-name="Carrete Retráctil Automático de Cable" data-price="38000" onchange="updatePrice()">
+                                    Carrete Retráctil Automático para el Cable de 10m
+                                </span>
+                                <span class="text-brand-blue font-bold">+$38.000</span>
+                            </label>
+                            <label class="cursor-pointer border border-brand-border bg-brand-dark p-3 rounded text-xs font-mono flex items-center justify-between hover:border-brand-blue">
+                                <span class="flex items-center gap-2 text-white">
+                                    <input type="checkbox" class="cfg-addon accent-brand-blue" data-name="Cajón Metálico Inferior con Cerradura" data-price="42000" onchange="updatePrice()">
+                                    Cajón Metálico sobre guías telescópicas
+                                </span>
+                                <span class="text-brand-blue font-bold">+$42.000</span>
+                            </label>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Right Column: Summary & WhatsApp CTA -->
+                <div class="lg:col-span-5">
+                    <div class="bg-brand-card p-6 border-2 border-brand-blue rounded-sm sticky top-28 shadow-2xl">
+                        <div class="flex items-center justify-between border-b border-brand-border pb-4 mb-4">
+                            <h3 class="font-tech font-bold text-xl text-white">RESUMEN DE COTIZACIÓN</h3>
+                            <span class="text-xs font-mono bg-brand-blue text-black px-2 py-0.5 rounded font-bold">HMW LIVE</span>
+                        </div>
+
+                        <!-- Technical specs breakdown -->
+                        <div class="space-y-3 font-mono text-xs text-gray-300 mb-6">
+                            <div class="flex justify-between border-b border-brand-border/40 pb-2">
+                                <span class="text-gray-400">Estructura Base:</span>
+                                <span class="text-white font-bold">Caño 40x40 (60x90x60cm)</span>
+                            </div>
+                            <div class="flex justify-between border-b border-brand-border/40 pb-2">
+                                <span class="text-gray-400">Modelo Seleccionado:</span>
+                                <span id="summaryModelName" class="text-brand-blue font-bold text-right">Tareas Generales</span>
+                            </div>
+                            <div class="flex justify-between border-b border-brand-border/40 pb-2">
+                                <span class="text-gray-400">Tablero Superior:</span>
+                                <span id="summaryWood" class="text-white">Eucalipto 30mm</span>
+                            </div>
+                            <div class="flex justify-between border-b border-brand-border/40 pb-2">
+                                <span class="text-gray-400">Ruedas:</span>
+                                <span id="summaryWheel" class="text-white">Goma Carrito</span>
+                            </div>
+                            <div class="border-b border-brand-border/40 pb-2">
+                                <span class="text-gray-400 block mb-1">Accesorios Extras:</span>
+                                <ul id="summaryAddons" class="text-[11px] text-gray-300 space-y-1 pl-2 list-disc">
+                                    <li class="text-gray-500 italic">Ningún adicional seleccionado</li>
+                                </ul>
+                            </div>
+                            <div class="bg-brand-dark p-3 rounded border border-brand-border/80 text-[11px] space-y-1">
+                                <p class="text-brand-blue font-bold"><i class="fa-solid fa-check mr-1"></i> Incluido de Serie:</p>
+                                <p>• Multitoma 4-5 bocas + USB/USB-C</p>
+                                <p>• Disyuntor + Botón Parada Emergencia</p>
+                                <p>• Cable taller 10 metros</p>
+                                <p>• Brazo LED giratorio intermodulable</p>
+                            </div>
+                        </div>
+
+                        <!-- Total Price Display -->
+                        <div class="bg-brand-dark p-4 rounded border border-brand-border mb-6">
+                            <span class="text-xs font-mono text-gray-400 block uppercase">Precio Estimado Final (ARS)</span>
+                            <div class="text-3xl sm:text-4xl font-tech font-bold text-brand-blue mt-1" id="totalPriceDisplay">
+                                $385.000
+                            </div>
+                            <span class="text-[10px] text-gray-400 font-mono block mt-1">* IVA e impuestos de fabricación incluidos. Envío a coordinar.</span>
+                        </div>
+
+                        <!-- WhatsApp Action Button -->
+                        <button onclick="sendWhatsAppQuote()" class="w-full bg-emerald-500 hover:bg-emerald-400 text-black font-tech font-bold text-base py-4 rounded-sm transition-all flex items-center justify-center gap-3 shadow-[0_0_20px_rgba(16,185,129,0.3)]">
+                            <i class="fa-brands fa-whatsapp text-2xl"></i>
+                            <span>Pedir Cotización por WhatsApp</span>
+                        </button>
+
+                        <p class="text-center text-[11px] font-mono text-gray-400 mt-3">
+                            <i class="fa-solid fa-truck-fast text-brand-blue mr-1"></i> Fabricación a pedido en 7 a 10 días hábiles.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FICHA TÉCNICA DE SEGURIDAD Y ELECTRICIDAD -->
+    <section id="seguridad" class="py-20 bg-brand-dark border-t border-brand-border">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <div class="lg:col-span-6 space-y-6">
+                    <span class="text-brand-blue font-mono text-xs uppercase tracking-widest font-semibold block">// SEGURIDAD ELÉCTRICA PROFESIONAL</span>
+                    <h2 class="text-3xl sm:text-4xl font-tech font-bold text-white uppercase leading-tight">
+                        PROTECCIÓN TOTAL EN TU LUGAR DE TRABAJO
+                    </h2>
+                    <p class="text-gray-300 text-sm leading-relaxed">
+                        Entendemos los riesgos de trabajar con amoladoras, soldadoras y herramientas de consumo elevado. Por eso, cada mesa HMW cuenta con un tablero de distribución integrado para trabajar con absoluta tranquilidad.
+                    </p>
+
+                    <div class="space-y-4 font-mono text-xs">
+                        <div class="bg-brand-card p-4 border-l-4 border-red-500 rounded-r-sm">
+                            <strong class="text-white text-sm block mb-1">Botón de Parada de Emergencia (Golpe de Puño):</strong>
+                            <p class="text-gray-400">Corta de forma instantánea el suministro eléctrico a todas las tomas en caso de atasco de herramienta o accidente manual.</p>
+                        </div>
+
+                        <div class="bg-brand-card p-4 border-l-4 border-brand-blue rounded-r-sm">
+                            <strong class="text-white text-sm block mb-1">Disyuntor Diferencial + Interruptor Termomagnético:</strong>
+                            <p class="text-gray-400">Protege al operario contra descargas eléctricas directas e indirectas y evita recalentamientos en la línea.</p>
+                        </div>
+
+                        <div class="bg-brand-card p-4 border-l-4 border-amber-500 rounded-r-sm">
+                            <strong class="text-white text-sm block mb-1">Cable Tipo Taller de 10 Metros:</strong>
+                            <p class="text-gray-400">Cable de hule/TPR súper resistente de alto grosor con prensacables reforzado para desplazarse libremente por el taller sin extensiones endebles.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right visual element -->
+                <div class="lg:col-span-6 bg-brand-card p-8 border border-brand-border rounded-sm relative overflow-hidden">
+                    <div class="absolute -right-10 -bottom-10 text-brand-steel/30 text-9xl font-tech font-bold select-none pointer-events-none">
+                        HMW
+                    </div>
+
+                    <h3 class="font-tech font-bold text-xl text-white mb-6 border-b border-brand-border pb-3 flex items-center gap-2">
+                        <i class="fa-solid fa-microchip text-brand-blue"></i>
+                        ESPECIFICACIÓN DEL PANEL ELÉCTRICO
+                    </h3>
+
+                    <div class="space-y-4 text-xs font-mono">
+                        <div class="flex justify-between items-center bg-brand-dark p-3 border border-brand-border">
+                            <span class="text-gray-400">Bocas Tomacorriente 220V:</span>
+                            <span class="text-white font-bold">4 o 5 Tomas de 10A/16A</span>
+                        </div>
+                        <div class="flex justify-between items-center bg-brand-dark p-3 border border-brand-border">
+                            <span class="text-gray-400">Puertos de Carga Integrados:</span>
+                            <span class="text-white font-bold">1x USB-A QC3.0 + 1x USB-C Power Delivery</span>
+                        </div>
+                        <div class="flex justify-between items-center bg-brand-dark p-3 border border-brand-border">
+                            <span class="text-gray-400">Luminaria LED:</span>
+                            <span class="text-white font-bold">Brazo articulado 12W / Cold White</span>
+                        </div>
+                        <div class="flex justify-between items-center bg-brand-dark p-3 border border-brand-border">
+                            <span class="text-gray-400">Manejo de Cables:</span>
+                            <span class="text-white font-bold">Ganchos envolventes integrados en chasis</span>
+                        </div>
+                    </div>
+
+                    <div class="mt-6 p-4 bg-brand-blue/10 border border-brand-blue/30 rounded text-center">
+                        <span class="text-brand-blue font-mono text-xs font-bold block">100% ENSAYADO BAJO NORMA IEC</span>
+                        <span class="text-gray-400 text-[11px] mt-1 block">Cada mesa se entrega probada eléctricamente antes del despacho.</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- PROCESO DE FABRICACIÓN Y CALIDAD -->
+    <section id="calidad" class="py-20 bg-brand-card border-t border-brand-border">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-brand-blue font-mono text-xs uppercase tracking-widest font-semibold block mb-2">// HIERRO NACIONAL & GARANTÍA</span>
+                <h2 class="text-3xl sm:text-4xl font-tech font-bold text-white uppercase">Calidad de Construcción HMW</h2>
+                <p class="text-gray-400 mt-2 text-sm">
+                    No fabricamos muebles en serie livianos. Fabricamos equipos de trabajo pesado para durar décadas.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-brand-dark p-6 border border-brand-border rounded-sm">
+                    <span class="text-brand-blue font-tech font-bold text-2xl block mb-2">01</span>
+                    <h4 class="font-tech font-bold text-white text-lg mb-2">Corte y Soldadura MIG</h4>
+                    <p class="text-gray-400 text-xs leading-relaxed">
+                        Corte de precisión de tubo de 40x40 mm con soldadura continua para garantizar rigidez absoluta sin torsión.
+                    </p>
+                </div>
+
+                <div class="bg-brand-dark p-6 border border-brand-border rounded-sm">
+                    <span class="text-brand-blue font-tech font-bold text-2xl block mb-2">02</span>
+                    <h4 class="font-tech font-bold text-white text-lg mb-2">Acabado Epoxi Horneado</h4>
+                    <p class="text-gray-400 text-xs leading-relaxed">
+                        Pintura electrostática en polvo curada a 200°C en tono negro/gris mate para alta resistencia al desgaste.
+                    </p>
+                </div>
+
+                <div class="bg-brand-dark p-6 border border-brand-border rounded-sm">
+                    <span class="text-brand-blue font-tech font-bold text-2xl block mb-2">03</span>
+                    <h4 class="font-tech font-bold text-white text-lg mb-2">Tratamiento de Maderería</h4>
+                    <p class="text-gray-400 text-xs leading-relaxed">
+                        Maderas seleccionadas hidrófugas tratadas con lacas poliuritánicas de alta dureza anti-rayaduras.
+                    </p>
+                </div>
+
+                <div class="bg-brand-dark p-6 border border-brand-border rounded-sm">
+                    <span class="text-brand-blue font-tech font-bold text-2xl block mb-2">04</span>
+                    <h4 class="font-tech font-bold text-white text-lg mb-2">Garantía HMW 2 Años</h4>
+                    <p class="text-gray-400 text-xs leading-relaxed">
+                        Garantía estructural directa de fábrica por 24 meses en chasis de hierro y ensambles de soldadura.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-brand-dark border-t border-brand-border/80 pt-16 pb-12 font-mono text-xs">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+                
+                <!-- Col 1: Brand info -->
+                <div class="md:col-span-2 space-y-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-8 h-8 bg-brand-blue text-black font-tech font-bold text-lg flex items-center justify-center rounded-sm">
+                            HMW
+                        </div>
+                        <span class="font-tech font-bold text-lg text-white">HOME MOBILE WORK</span>
+                    </div>
+                    <p class="text-gray-400 text-xs max-w-sm leading-relaxed">
+                        Fabricación de estaciones de trabajo móviles de acero y madera en formato ergonómico de 60x90x60 cm. Diseñado y fabricado en Argentina.
+                    </p>
+                    <div class="text-gray-400 text-xs">
+                        <p><i class="fa-solid fa-globe text-brand-blue mr-2"></i>Dominio Oficial: <a href="https://hmw.com.ar" class="text-white hover:underline">hmw.com.ar</a></p>
+                    </div>
+                </div>
+
+                <!-- Col 2: Navigation -->
+                <div>
+                    <strong class="text-white font-tech block mb-3 text-sm">ENLACES RÁPIDOS</strong>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#plataforma" class="hover:text-brand-blue">Plataforma Base</a></li>
+                        <li><a href="#modelos" class="hover:text-brand-blue">Estaciones Especializadas</a></li>
+                        <li><a href="#configurador" class="hover:text-brand-blue">Simulador de Cotización</a></li>
+                        <li><a href="#seguridad" class="hover:text-brand-blue">Seguridad Eléctrica</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 3: Contact -->
+                <div>
+                    <strong class="text-white font-tech block mb-3 text-sm">CONTACTO DIRECTO</strong>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><i class="fa-brands fa-whatsapp text-emerald-400 mr-2"></i>+54 9 11 3456-7890</li>
+                        <li><i class="fa-solid fa-envelope text-brand-blue mr-2"></i>ventas@hmw.com.ar</li>
+                        <li><i class="fa-solid fa-location-dot text-brand-blue mr-2"></i>Buenos Aires, Argentina</li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="border-t border-brand-border/60 pt-6 flex flex-col sm:flex-row items-center justify-between text-gray-400 text-[11px]">
+                <p>© 2026 HMW - Home Mobile Work. Todos los derechos reservados.</p>
+                <p class="mt-2 sm:mt-0">Sitio listo para GitHub Pages / HMW Argentina</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- INTERACTIVE JAVASCRIPT LOGIC -->
+    <script>
+        // -------------------------------------------------------------
+        // TABS SWITCHER FOR THE 5 STATIONS
+        // -------------------------------------------------------------
+        function switchTab(tabIndex) {
+            // Update Tab buttons
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach((btn, idx) => {
+                if (idx + 1 === tabIndex) {
+                    btn.classList.add('border-brand-blue', 'bg-brand-steel', 'text-white');
+                    btn.classList.remove('border-transparent', 'text-gray-400');
+                } else {
+                    btn.classList.remove('border-brand-blue', 'bg-brand-steel', 'text-white');
+                    btn.classList.add('border-transparent', 'text-gray-400');
+                }
+            });
+
+            // Update Tab content panels
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach((content, idx) => {
+                if (idx + 1 === tabIndex) {
+                    content.classList.remove('hidden');
+                } else {
+                    content.classList.add('hidden');
+                }
+            });
+        }
+
+        // Helper to jump to configurator with a preset selected
+        function loadPresetInConfigurator(modelIndex) {
+            const select = document.getElementById('cfgModel');
+            select.value = modelIndex.toString();
+            updatePrice();
+            
+            // Scroll smoothly to configurator
+            document.getElementById('configurador').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // -------------------------------------------------------------
+        // CONFIGURATOR & REAL-TIME PRICE CALCULATOR
+        // -------------------------------------------------------------
+        function updatePrice() {
+            // 1. Model Price
+            const modelSelect = document.getElementById('cfgModel');
+            const selectedOption = modelSelect.options[modelSelect.selectedIndex];
+            const basePrice = parseInt(selectedOption.getAttribute('data-price') || '385000');
+            const modelName = selectedOption.text.split('-')[1].split('(')[0].trim();
+
+            // 2. Wood Option
+            const woodRadio = document.querySelector('input[name="woodType"]:checked');
+            const woodPrice = parseInt(woodRadio.getAttribute('data-price') || '0');
+            const woodName = woodRadio.value;
+
+            // 3. Wheel Option
+            const wheelRadio = document.querySelector('input[name="wheelType"]:checked');
+            const wheelPrice = parseInt(wheelRadio.getAttribute('data-price') || '0');
+            const wheelName = wheelRadio.value;
+
+            // 4. Addons
+            const addons = document.querySelectorAll('.cfg-addon:checked');
+            let addonsPrice = 0;
+            const addonNames = [];
+
+            addons.forEach(addon => {
+                addonsPrice += parseInt(addon.getAttribute('data-price') || '0');
+                addonNames.push(addon.getAttribute('data-name'));
+            });
+
+            // Total sum
+            const totalPrice = basePrice + woodPrice + wheelPrice + addonsPrice;
+
+            // Update UI elements
+            document.getElementById('totalPriceDisplay').textContent = '$' + totalPrice.toLocaleString('es-AR');
+            document.getElementById('summaryModelName').textContent = modelName;
+            document.getElementById('summaryWood').textContent = woodName;
+            document.getElementById('summaryWheel').textContent = wheelName;
+
+            // Update Addons UI list
+            const addonsListUI = document.getElementById('summaryAddons');
+            addonsListUI.innerHTML = '';
+            if (addonNames.length === 0) {
+                addonsListUI.innerHTML = '<li class="text-gray-400 italic">Sin adicionales seleccionados</li>';
+            } else {
+                addonNames.forEach(name => {
+                    const li = document.createElement('li');
+                    li.textContent = '• ' + name;
+                    li.classList.add('text-brand-blue');
+                    addonsListUI.appendChild(li);
+                });
+            }
+        }
+
+        // -------------------------------------------------------------
+        // WHATSAPP QUOTE GENERATOR
+        // -------------------------------------------------------------
+        function sendWhatsAppQuote() {
+            const modelSelect = document.getElementById('cfgModel');
+            const selectedOption = modelSelect.options[modelSelect.selectedIndex];
+            const modelText = selectedOption.text;
+            
+            const woodRadio = document.querySelector('input[name="woodType"]:checked').value;
+            const wheelRadio = document.querySelector('input[name="wheelType"]:checked').value;
+            
+            const addons = document.querySelectorAll('.cfg-addon:checked');
+            let addonsText = '';
+            addons.forEach(addon => {
+                addonsText += `\n - ${addon.getAttribute('data-name')}`;
+            });
+            if (!addonsText) addonsText = '\n - Ninguno';
+
+            const totalPrice = document.getElementById('totalPriceDisplay').textContent;
+
+            // Format message
+            const message = `Hola HMW! Quisiera cotizar una Estación de Trabajo Móvil:%0A` +
+                `%0A*Modelo:* ${modelText}` +
+                `%0A*Medidas:* 60cm x 90cm x 60cm` +
+                `%0A*Tablero:* ${woodRadio}` +
+                `%0A*Ruedas:* ${wheelRadio}` +
+                `%0A*Accesorios Extras:*${addonsText}` +
+                `%0A%0A*Incluye:* Multitoma + USB, Botón Parada Emergencia + Disyuntor, Cable 10m y Brazo LED.` +
+                `%0A%0A*Precio Estimado Configurado:* ${totalPrice} ARS` +
+                `%0A%0A¿Me confirman disponibilidad y costo de envío?`;
+
+            const phone = "5491134567890"; // Mock sales phone
+            window.open(`https://wa.me/${phone}?text=${message}`, '_blank');
+        }
+
+        // Mobile Menu Toggle
+        document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        });
+
+        // -------------------------------------------------------------
+        // CANVAS BLUEPRINT 3D ROTATION SIMULATION
+        // -------------------------------------------------------------
+        const canvas = document.getElementById('blueprintCanvas');
+        const ctx = canvas.getContext('2d');
+        let rotationAngle = 0.4;
+        let isDragging = false;
+        let startX = 0;
+
+        function drawBlueprint() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            const centerX = canvas.width / 2;
+            const centerY = canvas.height / 2 + 20;
+            const sizeX = 110;
+            const sizeY = 140;
+            const sizeZ = 110;
+
+            const cos = Math.cos(rotationAngle);
+            const sin = Math.sin(rotationAngle);
+
+            // Project 3D coordinate
+            function project(x, y, z) {
+                const rx = x * cos - z * sin;
+                const rz = x * sin + z * cos;
+                const px = centerX + rx;
+                const py = centerY - y + rz * 0.35;
+                return { x: px, y: py };
+            }
+
+            // Define corners of the 60x90x60 workstation
+            const vertices = [
+                // Bottom frame
+                project(-sizeX/2, -sizeY/2, -sizeZ/2),
+                project(sizeX/2, -sizeY/2, -sizeZ/2),
+                project(sizeX/2, -sizeY/2, sizeZ/2),
+                project(-sizeX/2, -sizeY/2, sizeZ/2),
+                // Top frame
+                project(-sizeX/2, sizeY/2, -sizeZ/2),
+                project(sizeX/2, sizeY/2, -sizeZ/2),
+                project(sizeX/2, sizeY/2, sizeZ/2),
+                project(-sizeX/2, sizeY/2, sizeZ/2)
+            ];
+
+            // Set Blueprint line style
+            ctx.strokeStyle = '#00A8FF';
+            ctx.lineWidth = 2;
+            ctx.shadowColor = '#00A8FF';
+            ctx.shadowBlur = 8;
+
+            // Helper to draw edges
+            function drawLine(p1, p2, width=2, color='#00A8FF') {
+                ctx.beginPath();
+                ctx.strokeStyle = color;
+                ctx.lineWidth = width;
+                ctx.moveTo(p1.x, p1.y);
+                ctx.lineTo(p2.x, p2.y);
+                ctx.stroke();
+            }
+
+            // 1. Draw 4 Vertical Legs (40x40 Structural tube representation)
+            drawLine(vertices[0], vertices[4]);
+            drawLine(vertices[1], vertices[5]);
+            drawLine(vertices[2], vertices[6]);
+            drawLine(vertices[3], vertices[7]);
+
+            // 2. Draw Bottom Frame + Wood Lower Shelf
+            drawLine(vertices[0], vertices[1]);
+            drawLine(vertices[1], vertices[2]);
+            drawLine(vertices[2], vertices[3]);
+            drawLine(vertices[3], vertices[0]);
+
+            // 3. Draw Top Frame & Main Wooden Tabletop
+            drawLine(vertices[4], vertices[5]);
+            drawLine(vertices[5], vertices[6]);
+            drawLine(vertices[6], vertices[7]);
+            drawLine(vertices[7], vertices[4]);
+
+            // Draw Wood Grain Lines on top tabletop
+            ctx.fillStyle = 'rgba(0, 168, 255, 0.15)';
+            ctx.beginPath();
+            ctx.moveTo(vertices[4].x, vertices[4].y);
+            ctx.lineTo(vertices[5].x, vertices[5].y);
+            ctx.lineTo(vertices[6].x, vertices[6].y);
+            ctx.lineTo(vertices[7].x, vertices[7].y);
+            ctx.closePath();
+            ctx.fill();
+
+            // 4. Draw Swivel Casters (4 wheels)
+            [0, 1, 2, 3].forEach(idx => {
+                const p = vertices[idx];
+                ctx.beginPath();
+                ctx.fillStyle = '#ffffff';
+                ctx.arc(p.x, p.y + 12, 6, 0, Math.PI * 2);
+                ctx.fill();
+            });
+
+            // 5. Draw Electric Module & Emergency Stop Button on corner
+            const eBox = project(sizeX/2 + 5, sizeY/4, sizeZ/2);
+            ctx.fillStyle = '#ff3333';
+            ctx.beginPath();
+            ctx.arc(eBox.x, eBox.y, 5, 0, Math.PI * 2);
+            ctx.fill();
+
+            // 6. Draw LED Arm Swivel on Top Corner
+            const armBase = vertices[6];
+            const armTop = { x: armBase.x + 20, y: armBase.y - 40 };
+            drawLine(armBase, armTop, 3, '#ffffff');
+            
+            // LED Light Head
+            ctx.fillStyle = '#00A8FF';
+            ctx.beginPath();
+            ctx.arc(armTop.x, armTop.y, 7, 0, Math.PI * 2);
+            ctx.fill();
+
+            // Reset shadow
+            ctx.shadowBlur = 0;
+        }
+
+        // Drag listeners for 3D rotation
+        canvas.addEventListener('mousedown', (e) => {
+            isDragging = true;
+            startX = e.clientX;
+        });
+
+        window.addEventListener('mouseup', () => {
+            isDragging = false;
+        });
+
+        window.addEventListener('mousemove', (e) => {
+            if (isDragging) {
+                const deltaX = e.clientX - startX;
+                rotationAngle += deltaX * 0.01;
+                startX = e.clientX;
+                drawBlueprint();
+            }
+        });
+
+        // Touch support for mobile canvas interaction
+        canvas.addEventListener('touchstart', (e) => {
+            isDragging = true;
+            startX = e.touches[0].clientX;
+        });
+        window.addEventListener('touchend', () => {
+            isDragging = false;
+        });
+        window.addEventListener('touchmove', (e) => {
+            if (isDragging) {
+                const deltaX = e.touches[0].clientX - startX;
+                rotationAngle += deltaX * 0.01;
+                startX = e.touches[0].clientX;
+                drawBlueprint();
+            }
+        });
+
+        // Initial setup on page load
+        window.onload = function() {
+            updatePrice();
+            drawBlueprint();
+        };
+    </script>
 </body>
 </html>
