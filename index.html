@@ -1060,7 +1060,7 @@
                 
                 card.innerHTML = `
                     <div class="relative aspect-[4/3] overflow-hidden bg-brand-dark cursor-pointer" onclick="openLightbox(${galleryImages.indexOf(item)})">
-                        <img src="${item.url}" alt="${item.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.src='https://placehold.co/800x600/161920/00A8FF?text=HMW+Producto+Terminado'">
+                        <img src="${item.src}" alt="${item.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.src='https://placehold.co/800x600/161920/00A8FF?text=HMW+Producto+Terminado'">
                         <div class="absolute top-3 left-3 bg-brand-blue text-black font-mono font-bold text-[10px] px-2 py-0.5 rounded">
                             ${item.badge}
                         </div>
