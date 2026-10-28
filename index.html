@@ -196,18 +196,19 @@
                             <span class="bg-brand-blue/10 px-2 py-0.5 border border-brand-blue/30 rounded text-[10px]">MEDIDA: 90x60x90 cm</span>
                         </div>
 
-                        <!-- Featured Photo Display Card -->
-                        <div class="relative aspect-[4/3] rounded-sm overflow-hidden border border-brand-border group cursor-pointer" onclick="openLightbox(0)">
-                            <img src="images/hmw_tareas_generales.png?auto=format&fit=crop&w=800&q=80" 
-                                 alt="Estación HMW Terminado" 
-                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                                 onerror="this.src='https://placehold.co/800x600/161920/00A8FF?text=Estacion+HMW+Mesa+Trabajo'">
-                            
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent flex flex-col justify-end p-4">
-                                <span class="text-brand-blue font-mono text-[10px] uppercase font-bold tracking-wider">// MODELO DESTACADO</span>
-                                <h3 class="font-tech font-bold text-white text-lg">Estación Móvil Multitarea 90x60</h3>
-                                <p class="text-gray-300 text-xs mt-1">Estructura en caño 40x40 mm con pintura epoxi negra y madera dura con luz LED.</p>
-                            </div>
+<!-- Featured Photo Display Card -->
+<div class="relative w-full aspect-[4/3] rounded-sm overflow-hidden border border-brand-border group cursor-pointer" onclick="openLightbox(0)">
+    <img src="images/hmw_tareas_generales.png" 
+         alt="Estación HMW Terminado" 
+         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 block"
+         onerror="this.onerror=null; this.src='https://placehold.co/800x600/161920/00A8FF?text=Estacion+HMW+Mesa+Trabajo';">
+    
+    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent flex flex-col justify-end p-4 pointer-events-none">
+        <span class="text-brand-blue font-mono text-[10px] uppercase font-bold tracking-wider">// MODELO DESTACADO</span>
+        <h3 class="font-tech font-bold text-white text-lg">Estación Móvil Multitarea 90x60</h3>
+        <p class="text-gray-300 text-xs mt-1">Estructura en caño 40x40 mm con pintura epoxi negra y madera dura con luz LED.</p>
+    </div>
+</div>
 
                             <div class="absolute top-3 right-3 bg-black/70 backdrop-blur-md px-3 py-1.5 rounded text-white font-mono text-xs border border-brand-border flex items-center gap-1.5">
                                 <i class="fa-solid fa-expand text-brand-blue"></i>
