@@ -179,7 +179,7 @@
                         </a>
                         <a href="#galeria" class="inline-flex items-center justify-center gap-2 bg-brand-steel/80 hover:bg-brand-steel text-white border border-brand-border font-medium text-base px-6 py-4 rounded-sm transition-all">
                             <i class="fa-solid fa-camera text-brand-blue"></i>
-                            <span>Ver Productos Reales</span>
+                            <span>Ver Productos</span>
                         </a>
                     </div>
                 </div>
@@ -221,7 +221,7 @@
                                 <i class="fa-solid fa-plug text-brand-blue"></i>
                                 <div>
                                     <span class="text-gray-400 block text-[9px]">TABLERO ELÉCTRICO</span>
-                                    <span>220V + USB/</span>
+                                    <span>220V + USB</span>
                                 </div>
                             </div>
                             <div class="bg-brand-dark p-2.5 border border-brand-border/80 flex items-center gap-2">
@@ -258,7 +258,7 @@
                     </div>
                     <h3 class="font-tech font-bold text-xl text-white mb-2">Chasis de Caño 40x40</h3>
                     <p class="text-gray-400 text-sm leading-relaxed">
-                        Estructura soldada por proceso MIG con tubo de acero estructural de 40x40 mm. Pintura electrostática epoxi con curado al horno para alta resistencia a impactos y solventes.
+                        Estructura soldada por proceso MIG con tubo de acero estructural de 40x40 mm. Pintura epoxi para alta resistencia a impactos y solventes.
                     </p>
                     <ul class="mt-4 space-y-2 text-xs font-mono text-gray-300 border-t border-brand-border/60 pt-4">
                         <li><i class="fa-solid fa-check text-brand-blue mr-2"></i>Medidas: 90 cm Ancho x 60 cm Profundidad x 90 cm Alto </li>
@@ -273,7 +273,7 @@
                     </div>
                     <h3 class="font-tech font-bold text-xl text-white mb-2">Centro de Mando Eléctrico</h3>
                     <p class="text-gray-400 text-sm leading-relaxed">
-                        Módulo integrado de energía con 4/5 bocas 220V + puertos USB / USB-C. Seguridad total mediante Disyuntor térmico/diferencial y Botón de Parada de Emergencia tipo hongo.
+                        Módulo integrado de energía con 4/5 bocas 220V + puertos USB. Seguridad total mediante Disyuntor térmico/diferencial y Botón de Parada de Emergencia tipo hongo.
                     </p>
                     <ul class="mt-4 space-y-2 text-xs font-mono text-gray-300 border-t border-brand-border/60 pt-4">
                         <li><i class="fa-solid fa-check text-brand-blue mr-2"></i>Cable tipo taller reforzado de 10 metros</li>
@@ -328,6 +328,9 @@
                 </button>
                 <button onclick="switchTab(5)" id="tab-5" class="tab-btn font-tech px-5 py-3 text-sm font-bold whitespace-nowrap rounded-t-sm border-b-2 transition-all border-transparent hover:text-white text-gray-400">
                     5. Carpintería
+                </button>
+                <button onclick="switchTab(2)" id="tab-2" class="tab-btn font-tech px-5 py-3 text-sm font-bold whitespace-nowrap rounded-t-sm border-b-2 transition-all border-transparent hover:text-white text-gray-400">
+                    6. Laboratorio / Sistemas
                 </button>
             </div>
 
@@ -505,7 +508,7 @@
                                 <strong class="text-white text-xs font-mono block mb-1"><i class="fa-solid fa-broom text-brand-blue mr-2"></i>Gestión de Polvo:</strong>
                                 <p class="text-gray-400 text-xs">Soporte especial para enganche de aspiradora industrial y encendido sincronizado en panel.</p>
                             </div>
-                        </div>
+                        </div>                        
                         <div class="pt-4">
                             <button onclick="loadPresetInConfigurator(5)" class="bg-brand-blue hover:bg-cyan-400 text-black font-tech font-bold text-sm px-6 py-3 rounded-sm transition-all inline-flex items-center gap-2">
                                 <span>Personalizar Modelo Carpintería</span>
@@ -524,6 +527,44 @@
                     </div>
                 </div>
 
+                <!-- MODEL 6: LABORATORIO / SISTEMAS -->
+                <div id="content-2" class="tab-content hidden grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                    <div class="lg:col-span-7 space-y-4">
+                        <div class="inline-block text-xs font-mono bg-brand-blue/10 text-brand-blue px-2.5 py-1 border border-brand-blue/30 rounded">
+                            PROTECCIÓN ESD & CABLE MGT
+                        </div>
+                        <h3 class="text-2xl sm:text-3xl font-tech font-bold text-white">Estación para Laboratorio y Sistemas</h3>
+                        <p class="text-gray-300 text-sm leading-relaxed">
+                            Acondicionada especialmente para evitar sobrecargas y mantener el área de soldadura/medición perfectamente limpia y aislada. Soporte integrado para cautín y multímetro.
+                        </p>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+                            <div class="bg-brand-card p-3 border border-brand-border">
+                                <strong class="text-white text-xs font-mono block mb-1"><i class="fa-solid fa-microchip text-brand-blue mr-2"></i>Accesorios Integrados:</strong>
+                                <p class="text-gray-400 text-xs">Manta antiestática (ESD) extraíble, soporte para soldador de estaño con esponja, repisa para osciloscopio/multímetro, organizador de cables.</p>
+                            </div>
+                            <div class="bg-brand-card p-3 border border-brand-border">
+                                <strong class="text-white text-xs font-mono block mb-1"><i class="fa-solid fa-bolt text-brand-blue mr-2"></i>Seguridad Eléctrica Extra:</strong>
+                                <p class="text-gray-400 text-xs">Aislamiento de superficie, tomas con toma a tierra verificada y puertos USB/USB-C rápidos para instrumental.</p>
+                            </div>
+                        </div>
+                        <div class="pt-4">
+                            <button onclick="loadPresetInConfigurator(2)" class="bg-brand-blue hover:bg-cyan-400 text-black font-tech font-bold text-sm px-6 py-3 rounded-sm transition-all inline-flex items-center gap-2">
+                                <span>Personalizar Modelo Laboratorio</span>
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="lg:col-span-5 bg-brand-steel/40 p-6 border border-brand-border rounded text-center">
+                        <div class="w-24 h-24 mx-auto bg-brand-blue/20 text-brand-blue rounded-full flex items-center justify-center text-4xl mb-4 border border-brand-blue/40">
+                            <i class="fa-solid fa-plug-circle-bolt"></i>
+                        </div>
+                        <span class="font-mono text-xs text-gray-400 block">CONFIGURACIÓN BASE DE SERIE</span>
+                        <h4 class="font-tech font-bold text-lg text-white mt-1">HMW LAB-PRO WORKSTATION</h4>
+                        <span class="text-2xl font-tech font-bold text-brand-blue block my-2">$420.000 ARS</span>
+                        <span class="text-xs text-gray-400 font-mono">Incluye soporte de cautín y protección disyuntor especial</span>
+                    </div>
+                </div>
+                
             </div>
         </div>
     </section>
@@ -612,6 +653,7 @@
                             <option value="3" data-price="445000">3 - Estación Mecánica - $445.000</option>
                             <option value="4" data-price="460000">4 - Estación Herrería - $460.000</option>
                             <option value="5" data-price="435000">5 - Estación Carpintería - $435.000</option>
+                            <option value="6" data-price="420000">2 - Estación Laboratorio / Sistemas - $420.000</option>
                         </select>
                     </div>
 
@@ -886,9 +928,9 @@
 
                 <div class="bg-brand-dark p-6 border border-brand-border rounded-sm">
                     <span class="text-brand-blue font-tech font-bold text-2xl block mb-2">04</span>
-                    <h4 class="font-tech font-bold text-white text-lg mb-2">Garantía HMW 2 Años</h4>
+                    <h4 class="font-tech font-bold text-white text-lg mb-2">Garantía HMW 1 Año</h4>
                     <p class="text-gray-400 text-xs leading-relaxed">
-                        Garantía estructural directa de fábrica por 24 meses en chasis de hierro y ensambles de soldadura.
+                        Garantía estructural directa de fábrica por 12 meses en chasis de hierro y ensambles de soldadura.
                     </p>
                 </div>
             </div>
@@ -964,7 +1006,7 @@
                 <div>
                     <strong class="text-white font-tech block mb-3 text-sm">CONTACTO DIRECTO</strong>
                     <ul class="space-y-2 text-gray-400">
-                        <li><i class="fa-brands fa-whatsapp text-emerald-400 mr-2"></i>+54 9 11 3456-7890</li>
+                        <li><i class="fa-brands fa-whatsapp text-emerald-400 mr-2"></i>+54 9 11 6209-5206</li>
                         <li><i class="fa-solid fa-envelope text-brand-blue mr-2"></i>ventas@hmw.com.ar</li>
                         <li><i class="fa-solid fa-location-dot text-brand-blue mr-2"></i>Buenos Aires, Argentina</li>
                     </ul>
@@ -1033,12 +1075,12 @@
             },
             {
                 id: 6,
-                category: 'general',
-                title: 'Detalle de Seguridad: Golpe de Puño e Iluminación LED',
+                category: 'laboratorio',
+                title: 'Estación Laboratorio / Sistemas',
                 description: 'Módulo de energía integrado con parada de emergencia para cortar corriente instantáneamente.',
                 //url: 'https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80',
-                src: 'images/hmw_.png',
-                badge: 'Seguridad'
+                src: 'images/hmw_laboratorio.png',
+                badge: 'Laboratorio'
             }
         ];
 
